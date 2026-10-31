@@ -1,0 +1,38 @@
+REYTUP 4.2 — ELITE EDITION
+
+PRESENTATION REFRESH
+- Added a unified Elite Finish visual layer across all 14 HTML pages.
+- Refined typography hierarchy, navigation glass surfaces, mint accent system, CTA treatment,
+  workspace shell, dashboard metric cards, forms, map frames, pricing cards and authentication screens.
+- Added responsive polish for tablet and mobile screens, visible focus treatment and reduced-motion support.
+- Existing page markup, IDs, form names, API routes and application workflows were preserved.
+
+CONFIGURATION PRESERVATION
+- The existing .env was copied byte-for-byte from the matching ReytUp 4.2 project archive.
+- No environment variable name or value was edited.
+- Existing data/.jwt-secret was preserved byte-for-byte to avoid changing existing JWT sessions.
+- No SMTP account, provider, or new API key was created.
+- No local database file was included; runtime data is created in data/ when the app starts.
+
+STABILITY / MAP HANDLING
+- This build retains the Overpass respectful fallback, short timeout, result cache and request coalescing.
+- Access-denied responses (403/406) and rate limiting (429) are not bypassed by endpoint rotation.
+- Missing map data remains unknown rather than being represented as zero competitors.
+- Google Places remains an optional source and requires the existing server-side key and enabled API/billing.
+
+VALIDATION
+- npm run check
+- npm test
+- ZIP integrity check
+- .env and data/.jwt-secret SHA-256 equality checks
+- Static route and asset delivery checks: passed; browser screenshot automation was not available in this runtime
+
+IMPORTANT
+Public geocoding and map services are third-party services. No local package can guarantee availability,
+complete POI coverage, or uninterrupted responses from those providers.
+
+DATABASE LOGIN FIX (2026-10-31)
+- Fixed Windows startup so any configured Supabase DATABASE_URL triggers the secure password prompt, not only empty/placeholder URLs.
+- A stale/rejected password in the preserved .env is no longer silently reused by npm start on Windows.
+- The newly entered password is percent-encoded and applied only to the child server process; .env is never rewritten.
+- Added automated tests for Supabase URL detection and launcher password prompting.

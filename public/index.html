@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ReytUp — Biznes lokasiyasını analiz et. Bazar konteksti, rəqabət sıxlığı və əlçatanlıq — bir qərar ekranında.">
+<title>ReytUp — Location Intelligence Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="reytup-signal.css">
+  <link rel="stylesheet" href="atelier-refresh.css">
+  <link rel="stylesheet" href="elite-polish.css">
+  <link rel="stylesheet" href="typography-system.css?v=20261031-1">
+</head>
+<body class="home-page">
+
+<!-- NAVBAR -->
+<header class="site-nav-bar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Reyt<em>Up</em></a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html" class="nav-link active" data-i18n="nav.home">Ana səhifə</a>
+      <a href="find-my-place.html" class="nav-link" data-i18n="nav.findMyPlace">Find My Place</a>
+      <a href="analyze.html" class="nav-link" data-i18n="nav.analysis">Analiz</a>
+      <a href="location-battle.html" class="nav-link" data-i18n="nav.locationBattle">Location Battle</a>
+      <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+      <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+      <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="login.html" class="nav-auth-link" id="header-login" data-i18n="nav.signin">Daxil ol</a>
+      <a href="dashboard.html" class="nav-auth-link hidden" id="header-dashboard" data-i18n="nav.dashboard">Panel</a>
+      <button type="button" class="nav-auth-link hidden" id="header-logout" data-logout data-i18n="nav.logout">Çıxış</button>
+      <a href="analyze.html" class="nav-cta-btn" data-i18n="cta.analyze">Analiz et ↗</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <a href="index.html" class="nav-drawer-item active" data-i18n-before="nav.home">Ana səhifə <span>↗</span></a>
+    <a href="find-my-place.html" class="nav-drawer-item" data-i18n-before="nav.findMyPlace">Find My Place <span>↗</span></a>
+    <a href="analyze.html" class="nav-drawer-item" data-i18n-before="nav.analysis">Analiz <span>↗</span></a>
+    <a href="location-battle.html" class="nav-drawer-item" data-i18n-before="nav.locationBattle">Location Battle <span>↗</span></a>
+    <a href="pricing.html" class="nav-drawer-item" data-i18n-before="nav.pricing">Qiymətlər <span>↗</span></a>
+    <a href="about.html" class="nav-drawer-item" data-i18n-before="nav.about">Haqqımızda <span>↗</span></a>
+    <a href="contact.html" class="nav-drawer-item" data-i18n-before="nav.contact">Əlaqə <span>↗</span></a>
+    <a href="dashboard.html" class="nav-drawer-item" data-i18n-before="nav.dashboard">Panel <span>↗</span></a>
+    <div class="nav-drawer-footer">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="analyze.html" class="btn btn-primary" style="margin-top:20px;width:100%;justify-content:center" id="drawer-cta" data-i18n="cta.analyze">Analiz et ↗</a>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="drawer-overlay"></div>
+
+<main>
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="home-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+
+  <div class="hero-content">
+    <!-- Left: text -->
+    <div class="hero-text reveal">
+      <div class="hero-badge" data-i18n="home.heroBadge">Lokasiya kəşfiyyatı</div>
+      <h1 class="hero-h1">
+        <span data-i18n="home.heroH1Line1">İcarəyə imzalamadan əvvəl</span><br>
+        <em data-i18n="home.heroH1Line2">məkanı başa düş.</em>
+      </h1>
+      <p class="hero-desc" data-i18n="home.heroDesc">
+        Ünvan daxil et. ReytUp ətraf bazarı, rəqabət sıxlığını və əlçatanlıq siqnallarını analiz edib sənə lokasiya skoru verir — real OpenStreetMap məlumatları ilə.
+      </p>
+      <div class="hero-ctas">
+        <a href="analyze.html" class="btn btn-primary lg" data-i18n="cta.startAnalysis">Analizi başlat ↗</a>
+        <a href="about.html" class="btn btn-ghost lg" data-i18n="cta.howItWorks">Necə işləyir?</a>
+      </div>
+    </div>
+
+    <!-- Right: simplified map visualization (no fake scores) -->
+    <div class="hero-visual reveal r2">
+      <div class="intel-card">
+        <div class="intel-header">
+          <div class="intel-header-left">
+            <div class="intel-dots">
+              <div class="intel-dot"></div>
+              <div class="intel-dot"></div>
+              <div class="intel-dot"></div>
+            </div>
+            <span class="intel-title" data-i18n="home.intelTitle">LOKASIYA ANALİZİ</span>
+          </div>
+          <div class="intel-status" data-i18n="home.intelActive">Hazırlanır...</div>
+        </div>
+
+        <div class="intel-map-area">
+          <div class="intel-map-grid"></div>
+          <div class="intel-map-rings">
+            <div class="intel-ring intel-ring-1"></div>
+            <div class="intel-ring intel-ring-2"></div>
+            <div class="intel-ring intel-ring-3"></div>
+          </div>
+          <div class="intel-pin">
+            <div class="intel-pin-dot"></div>
+            <div class="intel-pin-stem"></div>
+          </div>
+          <div class="intel-comp-dot" style="top:38%;left:60%"></div>
+          <div class="intel-comp-dot" style="top:55%;left:68%"></div>
+          <div class="intel-comp-dot" style="top:30%;left:30%"></div>
+          <div class="intel-comp-dot" style="top:65%;left:25%"></div>
+          <div class="intel-float-card" style="top:8px;left:12px">
+            <span data-i18n="home.realData">REAL DATA</span>
+          </div>
+          <div class="intel-float-card" style="bottom:8px;right:10px">
+            <span data-i18n="home.locationIntelligence">LOCATION INTELLIGENCE</span>
+          </div>
+        </div>
+
+        <div class="intel-body">
+          <div class="intel-score-row">
+            <div class="intel-score-circle">
+              <svg width="56" height="56" viewBox="0 0 56 56">
+                <circle cx="28" cy="28" r="23" fill="none" stroke="var(--border)" stroke-width="4"/>
+                <circle cx="28" cy="28" r="23" fill="none" stroke="var(--border-mid)" stroke-width="4"
+                  stroke-dasharray="144.5" stroke-dashoffset="144.5" stroke-linecap="round"
+                  transform="rotate(-90 28 28)"/>
+              </svg>
+              <div class="intel-score-val">?</div>
+            </div>
+            <div class="intel-score-info">
+              <div class="intel-score-label" data-i18n="home.intelOverallScore">Lokasiya skoru</div>
+              <div class="intel-score-verdict" data-i18n="home.analyzeToSee">Analiz etmək üçün ünvan daxil edin</div>
+            </div>
+          </div>
+
+          <div class="intel-metrics">
+            <div class="intel-metric">
+              <span class="intel-metric-name" data-i18n="home.metricMarket">Bazar konteksti</span>
+              <div class="intel-metric-bar"><div class="intel-metric-fill" style="width:0%;background:var(--border-mid)"></div></div>
+              <span class="intel-metric-val">—</span>
+            </div>
+            <div class="intel-metric">
+              <span class="intel-metric-name" data-i18n="home.metricCompetition">Rəqabət</span>
+                <div class="intel-metric-bar"><div class="intel-metric-fill" style="width:72%;background:var(--green)"></div></div>
+                <span class="intel-metric-val">15/20</span>
+              </div>
+              <div class="intel-metric">
+                <span class="intel-metric-name" data-i18n="home.metricAccessibility">Əlçatanlıq</span>
+                <div class="intel-metric-bar"><div class="intel-metric-fill" style="width:80%;background:#6b9cf8"></div></div>
+                <span class="intel-metric-val">12/15</span>
+              </div>
+              <div class="intel-metric">
+                <span class="intel-metric-name" data-i18n="home.metricPhysical">Fiziki uyğunluq</span>
+                <div class="intel-metric-bar"><div class="intel-metric-fill" style="width:85%;background:var(--green)"></div></div>
+                <span class="intel-metric-val">17/20</span>
+              </div>
+              <div class="intel-metric">
+                <span class="intel-metric-name" data-i18n="home.metricFinance">Maliyyə</span>
+                <div class="intel-metric-bar"><div class="intel-metric-fill" style="width:65%;background:var(--amber)"></div></div>
+                <span class="intel-metric-val">16/20</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="intel-footer">
+            <span class="intel-footer-label" data-i18n="home.intelDataSource">Məlumat: OpenStreetMap · Overpass API</span>
+            <span class="intel-footer-badge">DEMO</span>
+          </div>
+          <div class="intel-demo-label" data-i18n="home.intelDemoLabel">İllüstrativ nümunə — real analiz deyil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span data-i18n="home.scrollDown">aşağı</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+============================================================ -->
+<section class="home-how">
+  <div class="container">
+    <div style="margin-bottom:56px">
+      <div class="eyebrow" data-i18n="home.howEyebrow">Analiz axını</div>
+      <h2 class="section-title"><span data-i18n="home.howTitle">Lokasiyadan</span> <em data-i18n="home.howTitleEm">qərara</em> <span data-i18n="home.howTitleEnd">— beş addımda.</span></h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="how-step-num">01</div>
+        <div class="how-step-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="11" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h4 data-i18n="home.how1Title">Lokasiya daxil et</h4>
+        <p data-i18n="home.how1Desc">Ünvan, koordinat və ya elan linki daxil et. ReytUp onu coğrafi kontekstə yerləşdirir.</p>
+      </div>
+
+      <div class="how-step reveal r2">
+        <div class="how-step-num">02</div>
+        <div class="how-step-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h4 data-i18n="home.how2Title">Ətraf mühit oxunur</h4>
+        <p data-i18n="home.how2Desc">OpenStreetMap və Overpass API vasitəsilə 1.2 km radiusda yaxın bizneslər, nəqliyyat nöqtələri toplanır.</p>
+      </div>
+
+      <div class="how-step reveal r3">
+        <div class="how-step-num">03</div>
+        <div class="how-step-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-4 4 4 4-5 4 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h4 data-i18n="home.how3Title">Siqnallar analiz edilir</h4>
+        <p data-i18n="home.how3Desc">Market sıxlığı, rəqabət çəkisi və əlçatanlıq siqnalları biznes kateqoriyası üçün çəkiləndirilir.</p>
+      </div>
+
+      <div class="how-step reveal r4">
+        <div class="how-step-num">04</div>
+        <div class="how-step-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h4 data-i18n="home.how4Title">Lokasiya skoru verilir</h4>
+        <p data-i18n="home.how4Desc">0–100 arası skor, hər komponent üçün ayrı bal, data mənbəyi və etimad səviyyəsi göstərilir.</p>
+      </div>
+
+      <div class="how-step reveal r4">
+        <div class="how-step-num">05</div>
+        <div class="how-step-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h4 data-i18n="home.how5Title">Sən qərar verirsən</h4>
+        <p data-i18n="home.how5Desc">Nəticə, güclü tərəflər, risklər və yoxlanılması tövsiyə edilən amillər — sən son qərar verənsən.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES
+============================================================ -->
+<section class="home-features">
+  <div class="container">
+    <div class="eyebrow" data-i18n="home.featEyebrow">Platforma imkanları</div>
+    <h2 class="section-title"><span data-i18n="home.featTitle">Bir qərara qədər</span> <em data-i18n="home.featTitleEm">hər siqnal</em> <span data-i18n="home.featTitleEnd">görünür.</span></h2>
+    <div class="features-grid">
+      <a href="analyze.html" class="feature-card reveal">
+        <div class="feature-num">01</div>
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="11" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M12 2C8.134 2 5 5.134 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.866-3.134-7-7-7z" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3 data-i18n="home.feat1Title">Lokasiya analizi</h3>
+        <p data-i18n="home.feat1Desc">Ünvan, koordinat və ya elan linki ilə başla. Coğrafi siqnallar avtomatik toplanır.</p>
+        <span class="feature-arrow">↗</span>
+      </a>
+      <a href="analyze.html" class="feature-card reveal r2">
+        <div class="feature-num">02</div>
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6" stroke-dasharray="3 2"/></svg>
+        </div>
+        <h3 data-i18n="home.feat2Title">Rəqabət xəritəsi</h3>
+        <p data-i18n="home.feat2Desc">1.2 km radiusda eyni kateqoriyalı bizneslər, məsafə və OSM mənbəyi ilə. Heç bir uydurma yoxdur.</p>
+        <span class="feature-arrow">↗</span>
+      </a>
+      <a href="analyze.html" class="feature-card reveal r3">
+        <div class="feature-num">03</div>
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-4 4 4 4-5 4 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 data-i18n="home.feat3Title">Maliyyə ssenarisi</h3>
+        <p data-i18n="home.feat3Desc">İcarə/gəlir nisbəti, break-even hesablaması. Yalnız sən məlumat daxil etdikdə. Heç bir əsassız rəqəm.</p>
+        <span class="feature-arrow">↗</span>
+      </a>
+      <a href="about.html" class="feature-card reveal r4">
+        <div class="feature-num">04</div>
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 data-i18n="home.feat4Title">Data şəffaflığı</h3>
+        <p data-i18n="home.feat4Desc">Hər metrik üçün mənbə, etimad səviyyəsi və məhdudiyyətlər açıqca göstərilir.</p>
+        <span class="feature-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DEMO SECTION
+============================================================ -->
+<section class="home-demo">
+  <div class="container">
+    <div class="demo-split">
+      <div class="reveal">
+        <div class="eyebrow" data-i18n="home.demoEyebrow">Nümunə analiz</div>
+        <h2 class="section-title" style="margin-bottom:20px"><span data-i18n="home.demoTitle">Belə görünür</span> <em data-i18n="home.demoTitleEm">nəticə ekranı.</em></h2>
+        <p style="font-size:15px;color:var(--text-2);line-height:1.75;margin-bottom:24px" data-i18n="home.demoDesc">
+          ReytUp ayrı-ayrı siqnalları birləşdirib sənə vahid qərar çərçivəsi verir. Market, rəqabət, əlçatanlıq — hər biri ayrı bal, hər biri ayrı mənbə.
+        </p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:32px">
+          <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-2)">
+            <span style="color:var(--green);font-size:16px">✓</span> <span data-i18n="home.demoBullet1">Real OpenStreetMap məlumatları</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-2)">
+            <span style="color:var(--green);font-size:16px">✓</span> <span data-i18n="home.demoBullet2">Hər komponent üçün ayrı etimad</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-2)">
+            <span style="color:var(--green);font-size:16px">✓</span> <span data-i18n="home.demoBullet3">Maliyyə ssenarisi — yalnız sən daxil etdikdə</span>
+          </li>
+          <li style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-2)">
+            <span style="color:var(--green);font-size:16px">✓</span> <span data-i18n="home.demoBullet4">Heç bir uydurulmuş statistika</span>
+          </li>
+        </ul>
+        <a href="analyze.html" class="btn btn-primary lg" data-i18n="cta.startAnalysis">Analizi başlat ↗</a>
+      </div>
+
+      <div class="reveal r2">
+        <div class="demo-interface">
+          <div class="demo-interface-bar">
+            <div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
+            <span class="demo-bar-title" data-i18n="home.demoBarTitle">ReytUp — Analiz Nəticəsi</span>
+          </div>
+          <div class="demo-content">
+            <div class="demo-location-row">
+              <span class="demo-loc-pin">📍</span>
+              <span class="demo-loc-text">Neftçilər prospekti 45, Bakı</span>
+              <span class="demo-loc-badge" data-i18n="home.demoVerified">Doğrulandı</span>
+            </div>
+
+            <div class="demo-score-block">
+              <div class="demo-score-num">78<span class="demo-score-max">/100</span></div>
+              <div class="demo-score-verdict" data-i18n="home.demoVerdict">● TÖVSİYƏ EDİLİR</div>
+            </div>
+
+            <div class="demo-breakdown">
+              <div class="demo-metric-row">
+                <span class="demo-metric-label" data-i18n="home.metricMarket">Bazar konteksti</span>
+                <div class="demo-metric-track"><div class="demo-metric-bar dm-market"></div></div>
+                <span class="demo-metric-score">18/25</span>
+              </div>
+              <div class="demo-metric-row">
+                <span class="demo-metric-label" data-i18n="home.metricCompetition">Rəqabət</span>
+                <div class="demo-metric-track"><div class="demo-metric-bar dm-comp"></div></div>
+                <span class="demo-metric-score">15/20</span>
+              </div>
+              <div class="demo-metric-row">
+                <span class="demo-metric-label" data-i18n="home.metricAccessibility">Əlçatanlıq</span>
+                <div class="demo-metric-track"><div class="demo-metric-bar dm-access"></div></div>
+                <span class="demo-metric-score">12/15</span>
+              </div>
+              <div class="demo-metric-row">
+                <span class="demo-metric-label" data-i18n="home.metricPhysical">Fiziki uyğunluq</span>
+                <div class="demo-metric-track"><div class="demo-metric-bar dm-physical"></div></div>
+                <span class="demo-metric-score">17/20</span>
+              </div>
+              <div class="demo-metric-row">
+                <span class="demo-metric-label" data-i18n="home.metricFinance">Maliyyə</span>
+                <div class="demo-metric-track"><div class="demo-metric-bar dm-finance"></div></div>
+                <span class="demo-metric-score">16/20</span>
+              </div>
+            </div>
+            <div class="demo-disclaimer" data-i18n="home.demoDisclaimer">⚠ İllüstrativ nümunə · Real analiz deyil · Demo data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY REYTUP
+============================================================ -->
+<section style="padding:100px 0;background:var(--bg-dark);border-top:1px solid var(--border)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="about-split">
+      <div class="reveal">
+        <div class="eyebrow" data-i18n="home.whyEyebrow">ReytUp niyə fərqlidir</div>
+        <h2 style="font-family:'Manrope',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:20px;line-height:1.1">
+          <span data-i18n="home.whyTitle">Yaxşı görünən ünvan həmişə</span><br><em style="color:var(--orange);font-style:normal" data-i18n="home.whyTitleEm">yaxşı biznes deyil.</em>
+        </h2>
+        <p style="font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:16px" data-i18n="home.whyDesc1">
+          Küçədən cəlbedici görünən lokasiya gizli doymuş rəqabəti, zəif əlçatanlığı və ya idarəolunmaz kirayə yükünü gizlədə bilər.
+        </p>
+        <p style="font-size:15px;color:var(--text-2);line-height:1.8;margin-bottom:28px" data-i18n="home.whyDesc2">
+          ReytUp bu sualları sənin üçün verir: Yaxında nə var? Oraya çatmaq nə qədər asandır? Maliyyə tərəfi tutarlıdırmı?
+        </p>
+        <a href="about.html" class="btn btn-ghost" data-i18n="home.whyMethodLink">Metodologiyamız ↗</a>
+      </div>
+      <div class="reveal r2">
+        <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+          <div style="background:var(--bg-surface);padding:20px 24px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);margin-bottom:6px">REAL DATA</div>
+            <div style="font-size:14px;color:var(--text-1);font-weight:600">OpenStreetMap / Overpass API</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:4px" data-i18n="home.whyRow1Desc">Rəqiblər, nəqliyyat nöqtələri, doğrulanmış koordinatlar</div>
+          </div>
+          <div style="background:var(--bg-surface);padding:20px 24px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6b9cf8;margin-bottom:6px" data-i18n="home.whyRow2Tag">MODEL SİQNALI</div>
+            <div style="font-size:14px;color:var(--text-1);font-weight:600" data-i18n="home.whyRow2Title">Coğrafi siqnallardan hesablanmış</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:4px" data-i18n="home.whyRow2Desc">Market skoru, kateqoriya çəkisi, sıxlıq siqnalı</div>
+          </div>
+          <div style="background:var(--bg-surface);padding:20px 24px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);margin-bottom:6px" data-i18n="home.whyRow3Tag">İSTİFADƏÇİ GİRİŞİ</div>
+            <div style="font-size:14px;color:var(--text-1);font-weight:600" data-i18n="home.whyRow3Title">Sənin maliyyə ssenairin</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:4px" data-i18n="home.whyRow3Desc">İcarə, gəlir, investisiya — yalnız sən daxil etdikdə</div>
+          </div>
+          <div style="background:var(--bg-surface);padding:20px 24px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px" data-i18n="home.whyRow4Tag">MÖVCUD DEYİL</div>
+            <div style="font-size:14px;color:var(--text-1);font-weight:600" data-i18n="home.whyRow4Title">Piyada trafiki, satış proqnozu</div>
+            <div style="font-size:12px;color:var(--text-2);margin-top:4px" data-i18n="home.whyRow4Desc">Bunlar açıq-aşkar qeyd edilir — ReytUp yalan uydurmuyor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BAND
+============================================================ -->
+<section class="home-cta-band">
+  <div class="container">
+    <div class="cta-band-inner reveal">
+      <div>
+        <h2 class="cta-band-h"><span data-i18n="home.ctaBandTitle">Növbəti qərarı</span> <em data-i18n="home.ctaBandTitleEm">məlumatlı</em> <span data-i18n="home.ctaBandTitleEnd">ver.</span></h2>
+        <p class="cta-band-sub" data-i18n="home.ctaBandSub">Pulsuz başla. Bir analiz ücretsizdir. İstədiyin vaxt plan yüksəlt.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="analyze.html" class="btn btn-primary lg" data-i18n="cta.analyze">Analiz et ↗</a>
+        <a href="pricing.html" class="btn btn-ghost lg" data-i18n="cta.seePlans">Planları gör ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">Reyt<em>Up</em></div>
+        <div class="footer-tagline">Location Intelligence</div>
+        <p data-i18n="home.footerBrandDesc">Lokasiya kəşfiyyatı — daha düşünülmüş biznes qərarları üçün. Bakı, Azərbaycan.</p>
+        <a href="mailto:zenithteam.tech@gmail.com" class="footer-email">zenithteam.tech@gmail.com</a>
+        <a class="footer-instagram-link" href="https://www.instagram.com/reytup.ai/" target="_blank" rel="noopener noreferrer" aria-label="ReytUp Instagram @reytup.ai profilini aç"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>@reytup.ai</span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer.platform">Platforma</h4>
+        <a href="analyze.html" data-i18n="nav.analysis">Analiz</a>
+        <a href="dashboard.html" data-i18n="nav.dashboard">Panel</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Qiymətlər</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4 data-i18n="footer.company">Şirkət</h4>
+        <a href="about.html" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" data-i18n="nav.contact">Əlaqə</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Məxfilik</a>
+        <a href="terms.html" data-i18n="footer.terms">Şərtlər</a>
+      </div>
+      <div class="footer-newsletter-col">
+        <h4 data-i18n="footer.newsletter">Yeniliklərdən xəbərdar ol</h4>
+        <form data-newsletter-form class="footer-newsletter-form">
+          <input type="email" name="email" placeholder="Email ünvanın" data-i18n-placeholder="footer.emailPlaceholder" required>
+          <button type="submit">↗</button>
+        </form>
+        <p class="footer-location" data-i18n="footer.location">Bakı · Azərbaycan · 2026</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 ReytUp. Bütün hüquqlar qorunur.</span>
+      <span data-i18n="footer.tagline">Better places. Clearer decisions.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="page-i18n.js"></script>
+<script src="app.js" defer></script>
+<script src="design-enhance.js"></script>
+<script src="assistant.js" defer></script>
+</body>
+</html>

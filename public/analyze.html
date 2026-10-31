@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Analiz — ReytUp</title>
+<meta name="description" content="Biznesiniz üçün ən yaxşı lokasiyanu tapın. ReytUp ilə lokasiya, rəqabət və maliyyə analizini başladın.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="reytup-signal.css">
+<link rel="stylesheet" href="analyze-extra.css">
+<link rel="stylesheet" href="workspace-shell.css">
+  <link rel="stylesheet" href="atelier-refresh.css">
+  <link rel="stylesheet" href="elite-polish.css">
+  <link rel="stylesheet" href="sidebar-polish.css?v=20261031-1">
+  <link rel="stylesheet" href="reytup-experience.css?v=20261031-2">
+  <link rel="stylesheet" href="typography-system.css?v=20261031-1">
+</head>
+<body>
+
+<!-- UNIFIED NAVBAR -->
+<header class="site-nav-bar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Reyt<em>Up</em></a>
+    <nav class="nav-links" aria-label="Əsas naviqasiya">
+      <a href="index.html" class="nav-link" data-i18n="nav.home">Ana səhifə</a>
+      <a href="find-my-place.html" class="nav-link" data-i18n="nav.findMyPlace">Find My Place</a>
+      <a href="analyze.html" class="nav-link active" data-i18n="nav.analysis">Analiz</a>
+      <a href="location-battle.html" class="nav-link" data-i18n="nav.locationBattle">Location Battle</a>
+      <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+      <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+      <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
+      <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Panel</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="login.html" class="nav-auth-link" id="header-login" data-i18n="nav.signin" data-i18n="nav.signin">Daxil ol</a>
+      <a href="dashboard.html" class="nav-auth-link hidden" id="header-dashboard" data-i18n="nav.dashboard">Panel</a>
+      <button type="button" class="nav-auth-link hidden" id="header-logout" data-logout data-i18n="nav.logout">Çıxış</button>
+      <a href="analyze.html" class="nav-cta-btn" data-i18n="cta.analyze">Analiz et ↗</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menyu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <a href="index.html" class="nav-drawer-item" data-i18n-before="nav.home">Ana səhifə <span>↗</span></a>
+    <a href="analyze.html" class="nav-drawer-item active">Analiz <span>↗</span></a>
+    <a href="pricing.html" class="nav-drawer-item">Qiymətlər <span>↗</span></a>
+    <a href="about.html" class="nav-drawer-item">Haqqımızda <span>↗</span></a>
+    <a href="contact.html" class="nav-drawer-item">Əlaqə <span>↗</span></a>
+    <a href="dashboard.html" class="nav-drawer-item">Panel <span>↗</span></a>
+    <div class="nav-drawer-footer">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="analyze.html" class="btn btn-primary" style="margin-top:20px;width:100%;justify-content:center" id="drawer-cta" data-i18n="cta.analyze">Analiz et ↗</a>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="drawer-overlay"></div>
+
+<div class="page-body">
+  <section class="page-hero" style="padding:60px 0 40px">
+    <div class="container">
+      <div class="kicker"><i></i> <span data-i18n="analyze.kicker">Lokasiya analizi</span></div>
+      <h1 class="reveal" style="margin-top:12px;font-size:clamp(26px,4vw,44px)" data-i18n="analyze.heroTitle">Lokasiyanı analiz et.</h1>
+      <p class="reveal r2" style="font-size:16px;color:var(--text-2);margin-top:8px;max-width:560px" data-i18n="analyze.heroDesc">Biznes növünü seçin, ünvan daxil edin, maliyyə məlumatlarını əlavə edin — analiz başlasın.</p>
+    </div>
+  </section>
+
+  <div class="page-section">
+    <div class="container">
+
+      <!-- Progress stepper -->
+      <div class="analyze-stepper" role="tablist" aria-label="Analiz addımları">
+        <div class="astep active" data-step="1" role="tab" tabindex="0" aria-selected="true">
+          <div class="astep-num">1</div>
+          <div class="astep-label" data-i18n="analyze.step1Label">Business DNA</div>
+        </div>
+        <div class="astep-line"></div>
+        <div class="astep" data-step="2" role="tab" tabindex="0" aria-selected="false">
+          <div class="astep-num">2</div>
+          <div class="astep-label" data-i18n="analyze.step2Label">Lokasiya</div>
+        </div>
+        <div class="astep-line"></div>
+        <div class="astep" data-step="3" role="tab" tabindex="0" aria-selected="false">
+          <div class="astep-num">3</div>
+          <div class="astep-label" data-i18n="analyze.step3Label">Maliyyə</div>
+        </div>
+        <div class="astep-line"></div>
+        <div class="astep" data-step="4" role="tab" tabindex="-1" aria-selected="false">
+          <div class="astep-num">4</div>
+          <div class="astep-label" data-i18n="analyze.step4Label">Nəticə</div>
+        </div>
+      </div>
+
+      <!-- Form section -->
+      <div id="form-section">
+        <form id="analyze-form">
+
+          <!-- STEP 1: Business DNA -->
+          <div class="form-step-panel active" data-panel="1">
+            <div class="business-dna-section">
+              <div class="business-dna-header">
+                <div class="business-dna-icon">🧬</div>
+                <div>
+                  <div class="business-dna-title" data-i18n="analyze.dnaTitle">Business DNA Profili</div>
+                  <div class="business-dna-subtitle" data-i18n="analyze.dnaSubtitle">Biznesiniz üçün müvafiq parametrləri təyin edin</div>
+                </div>
+              </div>
+
+              <div class="dna-grid">
+                <div class="dna-field">
+                  <label class="dna-label" for="dna-business-type" data-i18n="analyze.businessTypeLabel">Biznes növü *</label>
+                  <select class="business-type-select" id="dna-business-type" name="businessType" required>
+                    <option value="" data-i18n="analyze.selectPlaceholder">Seçin...</option>
+                    <option value="cafe" data-i18n="btype.cafe">Kafe</option>
+                    <option value="restaurant" data-i18n="btype.restaurant">Restoran</option>
+                    <option value="retail" data-i18n="btype.retail">Pərakəndə mağaza</option>
+                    <option value="beauty" data-i18n="btype.beauty">Gözəllik salonu</option>
+                    <option value="fitness" data-i18n="btype.fitness">Fitness mərkəzi</option>
+                    <option value="pharmacy" data-i18n="btype.pharmacy">Əczaçılıq</option>
+                    <option value="bakery" data-i18n="btype.bakery">Bakery</option>
+                    <option value="supermarket" data-i18n="btype.supermarket">Supermarket</option>
+                    <option value="electronics" data-i18n="btype.electronics">Elektronika</option>
+                    <option value="clothing" data-i18n="btype.clothing">Geyim mağazası</option>
+                    <option value="other" data-i18n="btype.other">Digər</option>
+                  </select>
+                </div>
+
+                <div class="dna-field">
+                  <label class="dna-label" for="dna-budget"><span data-i18n="analyze.budgetLabel">Aylıq icarə büdcəsi (AZN)</span> <span class="optional-tag" data-i18n="analyze.optional">könüllü</span></label>
+                  <input type="number" class="form-input" id="dna-budget" name="rentBudget" placeholder="məs: 2500" min="0">
+                </div>
+
+                <div class="dna-field">
+                  <label class="dna-label" for="dna-target-audience"><span data-i18n="analyze.targetAudienceLabel">Hədəf auditoriya</span> <span class="optional-tag" data-i18n="analyze.optional">könüllü</span></label>
+                  <select class="business-type-select" id="dna-target-audience" name="targetAudience">
+                    <option value="general" data-i18n="audience.general">Ümumi</option>
+                    <option value="families" data-i18n="audience.families">Ailələr</option>
+                    <option value="students" data-i18n="audience.students">Tələbələr</option>
+                    <option value="professionals" data-i18n="audience.professionals">Peşəkarlar</option>
+                    <option value="tourists" data-i18n="audience.tourists">Turistlər</option>
+                  </select>
+                </div>
+
+                <div class="dna-field">
+                  <label class="dna-label" for="dna-environment"><span data-i18n="analyze.environmentLabel">Ümumiyyət növü</span> <span class="optional-tag" data-i18n="analyze.optional">könüllü</span></label>
+                  <select class="business-type-select" id="dna-environment" name="environment">
+                    <option value="urban" data-i18n="env.urban">Şəhər mərkəzi</option>
+                    <option value="residential" data-i18n="env.residential">Yaşayış məhəlləsi</option>
+                    <option value="commercial" data-i18n="env.commercial">Ticarət mərkəzi</option>
+                    <option value="suburban" data-i18n="env.suburban">Şəhər kənarı</option>
+                  </select>
+                </div>
+              </div>
+
+              <section class="physical-fit-form" aria-labelledby="physical-fit-title">
+                <div class="physical-fit-heading">
+                  <div>
+                    <h4 id="physical-fit-title" data-i18n="analyze.physicalTitle">Obyektin fiziki uyğunluğu</h4>
+                    <p data-i18n="analyze.physicalHint">Məlum olan xüsusiyyətləri qeyd edin. Ən azı 3 sahə doldurulduqda 20 ballıq göstərici hesablanır.</p>
+                  </div>
+                  <span class="optional-tag" data-i18n="analyze.optional">könüllü</span>
+                </div>
+                <div class="physical-fit-grid">
+                  <div class="dna-field">
+                    <label class="dna-label" for="physical-area" data-i18n="analyze.physicalArea">Sahə (m²)</label>
+                    <input class="form-input" id="physical-area" name="physicalArea" type="number" min="1" max="100000" step="0.1" placeholder="məs: 65">
+                  </div>
+                  <div class="dna-field">
+                    <label class="dna-label" for="physical-floor" data-i18n="analyze.physicalFloor">Mərtəbə (0 — giriş)</label>
+                    <input class="form-input" id="physical-floor" name="physicalFloor" type="number" min="-5" max="100" step="1" placeholder="0">
+                  </div>
+                  <div class="dna-field">
+                    <label class="dna-label" for="physical-window" data-i18n="analyze.physicalWindow">Vitrin / pəncərə</label>
+                    <select class="business-type-select" id="physical-window" name="physicalWindow">
+                      <option value="" data-i18n="analyze.unknownOptional">Məlum deyil</option>
+                      <option value="large" data-i18n="analyze.windowLarge">Geniş vitrin</option>
+                      <option value="standard" data-i18n="analyze.windowStandard">Standart</option>
+                      <option value="limited" data-i18n="analyze.windowLimited">Məhdud</option>
+                      <option value="none" data-i18n="analyze.windowNone">Yoxdur</option>
+                    </select>
+                  </div>
+                  <div class="dna-field">
+                    <label class="dna-label" for="physical-entrance" data-i18n="analyze.physicalEntrance">Giriş tipi</label>
+                    <select class="business-type-select" id="physical-entrance" name="physicalEntrance">
+                      <option value="" data-i18n="analyze.unknownOptional">Məlum deyil</option>
+                      <option value="street" data-i18n="analyze.entranceStreet">Birbaşa küçədən</option>
+                      <option value="mall" data-i18n="analyze.entranceMall">Ticarət mərkəzindən</option>
+                      <option value="shared" data-i18n="analyze.entranceShared">Ümumi giriş</option>
+                      <option value="upper" data-i18n="analyze.entranceUpper">Yuxarı mərtəbə</option>
+                      <option value="basement" data-i18n="analyze.entranceBasement">Zirzəmi</option>
+                    </select>
+                  </div>
+                  <div class="dna-field">
+                    <label class="dna-label" for="physical-ventilation" data-i18n="analyze.physicalVentilation">Havalandırma</label>
+                    <select class="business-type-select" id="physical-ventilation" name="physicalVentilation">
+                      <option value="" data-i18n="analyze.unknownOptional">Məlum deyil</option>
+                      <option value="good" data-i18n="analyze.ventilationGood">Yaxşı</option>
+                      <option value="limited" data-i18n="analyze.ventilationLimited">Məhdud</option>
+                      <option value="none" data-i18n="analyze.ventilationNone">Yoxdur</option>
+                    </select>
+                  </div>
+                </div>
+                <p class="physical-fit-footnote" data-i18n="analyze.physicalDisclaimer">Bu bal istifadəçinin daxil etdiyi məlumatlara əsaslanan model qiymətləndirməsidir; obyektə baxış və texniki ekspertizanı əvəz etmir.</p>
+              </section>
+
+              <div style="margin-top: 24px;">
+                <label class="dna-label"><span data-i18n="analyze.competitionTolerance">Rəqabət tolerantlığı</span> <span class="optional-tag" data-i18n="analyze.optional">könüllü</span></label>
+                <input type="range" class="dna-range" id="dna-competition-tolerance" name="competitionTolerance" min="1" max="5" value="3">
+                <div class="dna-range-labels">
+                  <span data-i18n="analyze.competitionLow">Yüksək rəqabətə dözə bilirəm</span>
+                  <span data-i18n="analyze.competitionHigh">Az rəqabət istəyirəm</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 20px;">
+                <label class="dna-label"><span data-i18n="analyze.accessibilityImportance">Əlçatanlıq əhəmiyyəti</span> <span class="optional-tag" data-i18n="analyze.optional">könüllü</span></label>
+                <input type="range" class="dna-range" id="dna-accessibility-importance" name="accessibilityImportance" min="1" max="5" value="4">
+                <div class="dna-range-labels">
+                  <span data-i18n="analyze.accessibilityLow">Vacib deyil</span>
+                  <span data-i18n="analyze.accessibilityHigh">Çox vacib</span>
+                </div>
+              </div>
+
+              <div class="dna-summary" id="dna-summary" style="display:none;">
+                <div class="dna-summary-title">Biznes DNA Profili</div>
+                <div class="dna-summary-text" id="dna-summary-text"></div>
+              </div>
+
+              <div id="btype-error" class="field-error hidden" data-i18n="error.selectBusinessType">Biznes növü seçin.</div>
+            </div>
+            <div class="form-nav">
+              <div></div>
+              <button type="button" class="btn btn-primary step-next" data-next="2" data-i18n="cta.continue">Davam et →</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Location -->
+          <div class="form-step-panel" data-panel="2">
+            <div class="form-card">
+              <div class="form-card-header">
+                <div class="form-step-badge" data-i18n="analyze.step2Badge">Addım 2</div>
+                <h3 data-i18n="analyze.step2Title">Lokasiya</h3>
+                <p class="form-card-hint" data-i18n="analyze.step2Hint">Analiz ediləcək məkanın ünvanını və ya koordinatlarını daxil edin.</p>
+              </div>
+              <div class="form-field">
+                <label for="listingUrl"><span data-i18n="analyze.listingLabel">Elan linki</span> <span class="optional-tag" data-i18n="analyze.optional">könüllü</span></label>
+                <input id="listingUrl" name="listingUrl" type="url" placeholder="https://lalafo.az/obyekt-linki">
+                <div class="field-hint" data-i18n="analyze.listingHint">Lalafo, Bina.az, Tap.az elanı — ünvan avtomatik oxunacaq.</div>
+              </div>
+              <div class="form-field" style="margin-top:20px">
+                <label for="address" data-i18n="analyze.addressLabel">Dəqiq ünvan</label>
+                <div class="address-input-row">
+                  <input id="address" name="address" type="text" placeholder="Neftçilər pr. 45, Bakı" data-i18n-placeholder="analyze.addressPlaceholder" autocomplete="street-address">
+                  <button type="button" id="verify-address" class="btn btn-secondary address-verify-btn" data-i18n="analyze.verifyBtn">🗺 Yoxla</button>
+                </div>
+                <div id="address-status" class="address-status" aria-live="polite"></div>
+              </div>
+              <div class="form-field" style="margin-top:16px">
+                <label for="radiusMeters" data-i18n="analyze.radiusLabel">Analiz radiusu</label>
+                <select id="radiusMeters" name="radiusMeters" class="form-input">
+                  <option value="500">500 m · Yaxın ətraf</option>
+                  <option value="1000">1 km · Standart</option>
+                  <option value="1200" selected>1.2 km · Balanslı</option>
+                  <option value="2000">2 km · Geniş ərazi</option>
+                </select>
+                <div class="field-hint" data-i18n="analyze.radiusHint">Radius böyüdükcə daha geniş ərazi nəzərə alınır; nəticə məlumat mənbələrinin əhatəsindən asılıdır.</div>
+              </div>
+              <div class="coord-divider"><span data-i18n="analyze.coordOr">— ya da koordinatla —</span></div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="latitude" data-i18n="analyze.latLabel">Enlik (lat)</label>
+                  <input id="latitude" name="latitude" type="number" step="any" placeholder="40.4093">
+                </div>
+                <div class="form-field">
+                  <label for="longitude" data-i18n="analyze.lngLabel">Uzunluq (lng)</label>
+                  <input id="longitude" name="longitude" type="number" step="any" placeholder="49.8671">
+                </div>
+              </div>
+              <div id="preview-map-wrap" style="display:none;margin-top:16px">
+                <div class="map-preview-header">
+                  <span class="map-preview-label" data-i18n="analyze.mapPreviewLabel">Xəritədə önizləmə</span>
+                  <span id="map-preview-coords" class="map-preview-coords"></span>
+                </div>
+                <div id="map-preview" style="height:240px;border-radius:var(--radius);overflow:hidden"></div>
+              </div>
+              <div id="location-error" class="field-error hidden" data-i18n="error.enterLocation">Ünvan, link və ya koordinat daxil edin.</div>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost step-back" data-back="1" data-i18n="cta.back">← Geri</button>
+              <button type="button" class="btn btn-primary step-next" data-next="3" data-i18n="cta.continue">Davam et →</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Finance -->
+          <div class="form-step-panel" data-panel="3">
+            <div class="form-card">
+              <div class="form-card-header">
+                <div class="form-step-badge" data-i18n="analyze.step3Badge">Addım 3</div>
+                <h3><span data-i18n="analyze.step3Title">Maliyyə ssenarisi</span> <span class="optional-tag" data-i18n="analyze.optional">könüllü</span></h3>
+                <p class="form-card-hint" data-i18n="analyze.step3Hint">Maliyyə məlumatları daxil etsəniz daha dəqiq break-even, ROI və icarə/gəlir analizi alacaqsınız.</p>
+              </div>
+              <div class="finance-grid">
+                <div class="form-field">
+                  <label for="monthlyRent" data-i18n="analyze.rentLabel">Aylıq icarə</label>
+                  <div class="input-with-unit">
+                    <input id="monthlyRent" name="monthlyRent" type="number" min="0" placeholder="2 000">
+                    <span class="input-unit">₼</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="monthlyRevenue" data-i18n="analyze.revenueLabel">Planlanan gəlir (aylıq)</label>
+                  <div class="input-with-unit">
+                    <input id="monthlyRevenue" name="monthlyRevenue" type="number" min="0" placeholder="8 000">
+                    <span class="input-unit">₼</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="initialInvestment" data-i18n="analyze.investmentLabel">İlkin investisiya</label>
+                  <div class="input-with-unit">
+                    <input id="initialInvestment" name="initialInvestment" type="number" min="0" placeholder="15 000">
+                    <span class="input-unit">₼</span>
+                  </div>
+                </div>
+                <div class="finance-hint-box">
+                  <div class="fhint-icon">ℹ</div>
+                  <p>Bu məlumatlar fərdi ssenarinizə görə model hesablamasını əhəmiyyətli dərəcədə dəqiqləşdirir. Dəqiq olmasa belə, yaxın rəqəm daxil etmək faydalıdır.</p>
+                </div>
+              </div>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost step-back" data-back="2" data-i18n="cta.back">← Geri</button>
+              <button type="submit" id="analyze-submit" class="btn btn-primary big" data-i18n="analyze.submitBtn">Analizi Başlat ↗</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Loading card -->
+      <div class="loading-card" id="loading-card">
+        <div class="loading-spinner-wrap">
+          <svg class="loading-ring" viewBox="0 0 56 56" width="56" height="56">
+            <circle cx="28" cy="28" r="22" fill="none" stroke="#2a2a2a" stroke-width="4"/>
+            <circle cx="28" cy="28" r="22" fill="none" stroke="var(--orange)" stroke-width="4"
+              stroke-dasharray="138" stroke-dashoffset="100" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="0 28 28" to="360 28 28" dur="1s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="loading-title" data-i18n="analyze.loadingTitle">Analiz aparılır…</div>
+        <p class="loading-sub" data-i18n="analyze.loadingSub">Bu bir neçə saniyə çəkə bilər</p>
+        <div class="loading-steps">
+          <div class="loading-step" id="step-1"><i></i><span data-i18n="analyze.loadStep1">Ünvan geocode edilir</span></div>
+          <div class="loading-step" id="step-2"><i></i><span data-i18n="analyze.loadStep2">Yaxın bizneslər axtarılır</span></div>
+          <div class="loading-step" id="step-3"><i></i><span data-i18n="analyze.loadStep3">Skor hesablanır</span></div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           RESULT SECTION
+           ============================================================ -->
+      <div id="result-section" class="hidden">
+
+        <!-- TOP HEADER CARD -->
+        <div class="result-header-card">
+          <div class="result-meta">
+            <div class="result-id" id="result-id">Analiz #RU-00000</div>
+            <div class="result-date" id="result-date">—</div>
+            <div class="result-location-tag" id="result-location-tag">—</div>
+            <div class="result-source-tag" id="result-source-tag">OpenStreetMap</div>
+          </div>
+          <div class="result-score-block">
+            <div class="score-gauge-wrap">
+              <svg class="score-gauge" viewBox="0 0 120 120" width="120" height="120">
+                <circle cx="60" cy="60" r="50" fill="none" stroke="#1e1e1e" stroke-width="10"/>
+                <circle id="score-ring-fg" cx="60" cy="60" r="50" fill="none" stroke-width="10"
+                  stroke-dasharray="314.16" stroke-dashoffset="314.16" stroke-linecap="round"
+                  transform="rotate(-90 60 60)"/>
+              </svg>
+              <div class="score-gauge-inner">
+                <div class="score-num" id="score-val">—</div>
+                <div class="score-denom">/100</div>
+              </div>
+            </div>
+            <div class="score-verdict-block">
+              <div id="verdict" class="verdict-pill">—</div>
+              <div class="verdict-sub" id="verdict-sub" data-i18n="analyze.verdictSub">Analiz tamamlandı</div>
+              <div id="score-finance-note" style="display:none;font-size:11px;color:#e8a02a;margin-top:6px;padding:4px 8px;background:rgba(232,160,42,0.1);border-radius:4px;"></div>
+              <div id="score-coverage-note" class="score-coverage-note" style="display:none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECOMMENDATION CARD -->
+        <div class="rec-card" id="rec-card">
+          <div class="rec-icon" id="rec-icon">✓</div>
+          <div class="rec-content">
+            <div class="rec-label" id="rec-label">RECOMMENDATION</div>
+            <div class="rec-title" id="rec-title">—</div>
+            <div class="rec-desc" id="rec-desc">—</div>
+          </div>
+        </div>
+
+        <!-- WHY THIS LOCATION + RISKS -->
+        <div class="why-risks-grid">
+          <div class="why-card">
+            <div class="why-header">
+              <span class="why-icon">✦</span>
+              <h4 data-i18n="analyze.whyTitle">Niyə bu lokasiya?</h4>
+              <div class="data-confidence-badge" id="confidence-badge">
+                <span class="conf-dot"></span>
+                <span class="conf-label">Data Confidence</span>
+              </div>
+            </div>
+            <div id="why-list" class="why-list"></div>
+          </div>
+          <div class="risk-card">
+            <div class="why-header">
+              <span class="why-icon risk">⚠</span>
+              <h4 data-i18n="analyze.risksTitle">Risklər</h4>
+            </div>
+            <div id="risk-list" class="risk-list"></div>
+          </div>
+        </div>
+
+        <!-- SCORE BREAKDOWN -->
+        <div class="result-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.scoreBreakdown">Skor bölgüsü</h4>
+            <div class="score-model-note" data-i18n="analyze.scoreModelNote">Model siqnalları — ölçülmüş data deyil</div>
+          </div>
+          <div id="breakdowns" class="breakdown-list"></div>
+          <div class="breakdown-total-bar">
+            <div class="bt-label">TOTAL</div>
+            <div class="bt-val" id="bt-total">—<small>/100</small></div>
+          </div>
+        </div>
+
+        <!-- DEMAND & PROPERTY EVIDENCE -->
+        <div class="result-card evidence-context-card" id="evidence-context-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.evidenceTitle">Bazar konteksti və obyekt pasportu</h4>
+            <div class="score-model-note" data-i18n="analyze.evidenceSubtitle">Mənbə qeydləri və istifadəçi məlumatları</div>
+          </div>
+          <div id="demand-context-grid" class="demand-context-grid"></div>
+          <div id="demand-context-note" class="evidence-context-note"></div>
+          <div class="physical-inputs-result" id="physical-inputs-result"></div>
+        </div>
+
+        <!-- FINANCIAL METRICS -->
+        <div class="result-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.financeMetrics">Maliyyə göstəriciləri</h4>
+            <div class="score-model-note" data-i18n="analyze.financeModelNote">Model ssenarisi — zəmanət deyil</div>
+          </div>
+          <div class="finance-metrics-grid" id="finance-metrics">
+            <!-- populated by JS -->
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="result-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.mapView">Xəritə görünüşü</h4>
+            <a id="open-map-link" class="map-open-link" href="#" target="_blank" rel="noopener" data-i18n="analyze.openMap">Xəritədə aç ↗</a>
+          </div>
+          <div id="resolved-address" class="resolved-address"></div>
+          <div class="map-legend">
+            <div class="legend-item"><span class="legend-dot main"></span> <span data-i18n="analyze.mapLegendYou">Sizin lokasiya</span></div>
+            <div class="legend-item"><span class="legend-dot comp"></span> <span data-i18n="analyze.mapLegendComp">Rəqiblər</span></div>
+          </div>
+          <div id="map-leaflet" style="height:360px;border-radius:var(--radius);overflow:hidden;margin-top:12px"></div>
+          <div class="map-data-source">Mənbə: OpenStreetMap · Geocoder: Nominatim · <span id="map-data-note">Real xəritə məlumatları</span></div>
+        </div>
+
+        <!-- COMPETITORS -->
+        <div class="result-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.competitorsTitle">Yaxın rəqiblər</h4>
+            <div id="competitor-count-badge" class="comp-count-badge"></div>
+          </div>
+          <div id="competitors-wrap"></div>
+        </div>
+
+        <!-- LOCATION DNA -->
+        <div class="location-dna-section" id="location-dna-section">
+          <div class="dna-header">
+            <div class="dna-icon">🧬</div>
+            <div>
+              <div class="dna-title" data-i18n="analyze.locationDnaTitle">Location DNA</div>
+              <div class="dna-subtitle" data-i18n="analyze.locationDnaSubtitle">Bu lokasiyanın profili</div>
+            </div>
+          </div>
+          <div class="dna-profile-grid" id="dna-dimensions">
+            <!-- Populated by JS -->
+          </div>
+          <div class="dna-profile-summary">
+            <div class="dna-profile-summary-title" data-i18n="analyze.dnaSummarySection">Profil xülasəsi</div>
+            <div class="dna-profile-summary-text" id="dna-profile-summary-text">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- WHAT-IF SIMULATOR -->
+        <div class="whatif-section" id="whatif-section">
+          <div class="whatif-header">
+            <div class="whatif-icon">⚡</div>
+            <div>
+              <div class="whatif-title" data-i18n="analyze.whatIfTitle">What-If Simulator</div>
+              <div class="whatif-subtitle" data-i18n="analyze.whatIfSubtitle">Fərqli ssenariləri sınaq edin</div>
+            </div>
+          </div>
+
+          <div class="whatif-grid">
+            <div class="whatif-field">
+              <label class="whatif-label" data-i18n="analyze.whatIfRent">Aylıq icarə (AZN)</label>
+              <input type="number" class="whatif-input" id="whatif-rent" placeholder="0">
+            </div>
+            <div class="whatif-field">
+              <label class="whatif-label" data-i18n="analyze.whatIfRevenue">Gözlənilən gəlir (AZN)</label>
+              <input type="number" class="whatif-input" id="whatif-revenue" placeholder="0">
+            </div>
+            <div class="whatif-field">
+              <label class="whatif-label" data-i18n="analyze.whatIfInvestment">İlkin investisiya (AZN)</label>
+              <input type="number" class="whatif-input" id="whatif-investment" placeholder="0">
+            </div>
+          </div>
+
+          <div class="whatif-scenarios">
+            <button class="whatif-scenario-btn active" data-scenario="current">
+              <div class="whatif-scenario-label">CURRENT</div>
+              <div data-i18n="analyze.scenarioCurrent">Cari ssenari</div>
+            </button>
+            <button class="whatif-scenario-btn" data-scenario="conservative">
+              <div class="whatif-scenario-label">CONSERVATIVE</div>
+              <div data-i18n="analyze.scenarioConservative">Mühafizəkar</div>
+            </button>
+            <button class="whatif-scenario-btn" data-scenario="optimistic">
+              <div class="whatif-scenario-label">OPTIMISTIC</div>
+              <div data-i18n="analyze.scenarioOptimistic">Optimistik</div>
+            </button>
+          </div>
+
+          <div class="whatif-results" id="whatif-results">
+            <div class="whatif-results-title" data-i18n="analyze.whatIfResultsTitle">Ssenari nəticələri</div>
+            <div class="whatif-result-row">
+              <span class="whatif-result-label" data-i18n="analyze.whatIfFinanceScore">Maliyyə skoru</span>
+              <div>
+                <span class="whatif-result-value" id="whatif-finance-score">—/20</span>
+              </div>
+            </div>
+            <div class="whatif-result-row">
+              <span class="whatif-result-label" data-i18n="analyze.whatIfTotalScore">Ümumi skor</span>
+              <div>
+                <span class="whatif-result-value" id="whatif-total-score">—/100</span>
+                <span class="whatif-result-diff" id="whatif-total-diff"></span>
+              </div>
+            </div>
+            <div class="whatif-result-row">
+              <span class="whatif-result-label" data-i18n="analyze.whatIfBreakeven">Break-even (ay)</span>
+              <div>
+                <span class="whatif-result-value" id="whatif-breakeven">—</span>
+              </div>
+            </div>
+            <div class="whatif-result-row">
+              <span class="whatif-result-label" data-i18n="analyze.whatIfProfit">Aylıq mənfəət (AZN)</span>
+              <div>
+                <span class="whatif-result-value" id="whatif-profit">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DECISION NOTE / AI EXPLANATION -->
+        <div class="result-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.decisionNote">Qərar notu</h4>
+            <div class="score-model-note" id="decision-source-label">Model xülasəsi</div>
+          </div>
+          <div id="decision-note" class="decision-note-content"></div>
+        </div>
+
+        <!-- AI LOCATION ANALYST -->
+        <div class="result-card" id="ai-analyst-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.aiAnalystTitle">AI Location Analyst</h4>
+            <div class="score-model-note">Data-grounded questions</div>
+          </div>
+          <div class="ai-analyst-content">
+            <div class="ai-quick-questions">
+              <div class="ai-quick-title" data-i18n="analyze.aiQuickTitle">Sual seçin:</div>
+              <button class="ai-quick-btn" onclick="window.askAI && window.askAI(window.i18n.t('analyze.aiQ1').replace(/^[⚠✓❓] /,''))"><span data-i18n="analyze.aiQ1">⚠ Niyə bu lokasiya risklidir?</span></button>
+              <button class="ai-quick-btn" onclick="window.askAI && window.askAI(window.i18n.t('analyze.aiQ2').replace(/^[⚠✓❓] /,''))"><span data-i18n="analyze.aiQ2">✓ Niyə bu lokasiya güclüdür?</span></button>
+              <button class="ai-quick-btn" onclick="window.askAI && window.askAI(window.i18n.t('analyze.aiQ3').replace(/^[⚠✓❓] /,''))"><span data-i18n="analyze.aiQ3">❓ Ən böyük naməlum nələrdir?</span></button>
+              <button class="ai-quick-btn" onclick="window.askAI && window.askAI(window.i18n.t('analyze.aiQ4').replace(/^[⚠✓❓] /,''))"><span data-i18n="analyze.aiQ4">✓ İmzalamadan əvvəl nəyi təsdiq etməliyəm?</span></button>
+            </div>
+            <div class="ai-custom-question">
+              <input type="text" class="ai-question-input" id="ai-question-input" placeholder="Və ya öz sualınızı yazın..." data-i18n-placeholder="analyze.aiInputPlaceholder">
+              <button class="btn btn-primary sm" onclick="askCustomAI()" data-i18n="analyze.aiAskBtn">Soruş ↗</button>
+            </div>
+            <div class="ai-answer" id="ai-answer" style="display:none">
+              <div class="ai-answer-label" data-i18n="analyze.aiAnswerLabel">AI Cavab:</div>
+              <div class="ai-answer-text" id="ai-answer-text"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DATA DISCLAIMER -->
+        <div class="data-disclaimer-card">
+          <div class="disclaimer-icon">ℹ</div>
+          <div>
+            <div class="disclaimer-title" data-i18n="analyze.disclaimerTitle">Məlumat mənbələri və fərziyyələr</div>
+            <div class="disclaimer-body" id="disclaimer-body">
+              Bu analiz mövcud məkan mənbələrindən alınan yaxın obyekt məlumatları, ünvanın geokodlaşdırılması və model parametrləri əsasında hazırlanır.
+              Faktiki piyada trafiki ölçümü, satış proqnozu və ya uğur zəmanəti deyil.
+              Maliyyə ssenarisi daxil edilmiş rəqəmlərə əsaslanır — müstəqil yoxlama tövsiyə olunur.
+            </div>
+          </div>
+        </div>
+
+        <!-- FIELD VERIFICATION CHECKLIST -->
+        <div class="result-card">
+          <div class="result-card-head">
+            <h4 data-i18n="analyze.checklistTitle">Sahə Təsdiq Checklist</h4>
+            <div class="score-model-note" data-i18n="analyze.checklistNote">İmzalamadan əvvəl yoxlayın</div>
+          </div>
+          <div class="verification-checklist">
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check1">İcarə müqaviləsi və şərtlərini yoxlayın</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check2">Mağaza görünüşü və işarəlnməsini yoxlayın</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check3">Pik saatlarında (8-18) ziyarət edin</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check4">Piyada girişi və parkinq yoxlayın</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check5">Kommunal xidmətlər və icazələri təsdiq edin</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check6">Rəqibləri şəxsən yoxlayın</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check7">Trafik və parkinq şəraitini yoxlayın</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox">
+              <span data-i18n="analyze.check8">Yaxın bizneslərin fəaliyyətini müşahidə edin</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="result-actions">
+          <button id="reset-btn" class="btn btn-ghost" data-i18n="analyze.resetBtn">← Yeni analiz</button>
+          <button id="pdf-btn" class="btn btn-secondary" data-i18n="analyze.pdfBtn">📄 Print / Save as PDF</button>
+          <button id="print-btn" class="btn btn-ghost" style="display:none">Çap et</button>
+          <a href="dashboard.html" class="btn btn-secondary" data-i18n="cta.goToDashboard">Panelə get</a>
+        </div>
+
+      </div><!-- /result-section -->
+
+    </div>
+  </div>
+</div>
+
+<footer class="global-footer">
+  <div class="container">
+    <div class="global-footer-grid">
+      <div class="footer-brand">
+        <strong>Reyt<span>Up</span></strong>
+        <p data-i18n="footer.desc">Lokasiya, rəqabət və maliyyə ssenarisini bir yerdə oxuyan qərar platforması.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.platform">Platforma</h4>
+        <a href="analyze.html" data-i18n="nav.analysis">Analiz</a>
+        <a href="dashboard.html" data-i18n="nav.dashboard">Panel</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Qiymətlər</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.company">Şirkət</h4>
+        <a href="about.html" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" data-i18n="nav.contact">Əlaqə</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Məxfilik</a>
+        <a href="terms.html" data-i18n="footer.terms">Şərtlər</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4 data-i18n="footer.newsletter">Yeni imkanlardan xəbərdar ol</h4>
+        <form data-newsletter-form class="footer-newsletter-form">
+          <input type="email" name="email" required placeholder="Email ünvanın" data-i18n-placeholder="footer.emailPlaceholder">
+          <button type="submit">↗</button>
+        </form>
+        <div class="footer-contact-info" data-i18n="footer.location">Bakı, Azərbaycan</div>
+        <a class="footer-instagram-link" href="https://www.instagram.com/reytup.ai/" target="_blank" rel="noopener noreferrer" aria-label="ReytUp Instagram @reytup.ai profilini aç"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>@reytup.ai</span><span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="global-footer-bottom">
+      <span data-i18n="footer.rights">© 2026 ReytUp. Bütün hüquqlar qorunur.</span>
+      <span>Better places. Clearer decisions.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHY ENGINE MODAL -->
+<div class="why-modal" id="why-modal">
+  <div class="why-modal-content">
+    <div class="why-modal-title" id="why-modal-title" data-i18n="analyze.whyModalTitle">Niyə?</div>
+    <div class="why-modal-body" id="why-modal-body">
+      <!-- Populated by JS -->
+    </div>
+    <button class="btn btn-ghost" onclick="document.getElementById('why-modal').classList.remove('show')" style="margin-top:16px;width:100%" data-i18n="cta.close">Bağla</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="i18n.js"></script>
+<script src="page-i18n.js"></script>
+<script src="workspace-shell.js" defer></script>
+<script src="app.js" defer></script>
+<script src="analyze.js" defer></script>
+<script src="design-enhance.js"></script>
+<script src="assistant.js" defer></script>
+</body>
+</html>

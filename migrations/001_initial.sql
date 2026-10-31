@@ -1,0 +1,3 @@
+-- DEPRECATED: this historic draft used UUID identifiers and is incompatible with the current runtime.
+-- Do not apply this file to a new Supabase project. The current application uses
+-- migrations/002_supabase_runtime.sql with BIGINT identity identifiers.

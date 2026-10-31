@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find My Place — ReytUp</title>
+<meta name="description" content="Find the best location for your business with ReytUp's opportunity discovery system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="reytup-signal.css">
+<link rel="stylesheet" href="workspace-shell.css">
+  <link rel="stylesheet" href="atelier-refresh.css">
+  <link rel="stylesheet" href="elite-polish.css">
+  <link rel="stylesheet" href="sidebar-polish.css?v=20261031-1">
+  <link rel="stylesheet" href="reytup-experience.css?v=20261031-2">
+  <link rel="stylesheet" href="typography-system.css?v=20261031-1">
+</head>
+<body>
+
+<!-- UNIFIED NAVBAR -->
+<header class="site-nav-bar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Reyt<em>Up</em></a>
+    <nav class="nav-links" aria-label="Əsas naviqasiya">
+      <a href="index.html" class="nav-link" data-i18n="nav.home">Ana səhifə</a>
+      <a href="analyze.html" class="nav-link" data-i18n="nav.analysis">Analiz</a>
+      <a href="find-my-place.html" class="nav-link active">Find My Place</a>
+      <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+      <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+      <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
+      <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Panel</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="login.html" class="nav-auth-link" id="header-login" data-i18n="nav.signin" data-i18n="nav.signin">Daxil ol</a>
+      <a href="dashboard.html" class="nav-auth-link hidden" id="header-dashboard" data-i18n="nav.dashboard">Panel</a>
+      <button type="button" class="nav-auth-link hidden" id="header-logout" data-logout data-i18n="nav.logout">Çıxış</button>
+      <a href="analyze.html" class="nav-cta-btn" data-i18n="cta.analyze">Analiz et ↗</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menyu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <a href="index.html" class="nav-drawer-item" data-i18n-before="nav.home">Ana səhifə <span>↗</span></a>
+    <a href="analyze.html" class="nav-drawer-item">Analiz <span>↗</span></a>
+    <a href="find-my-place.html" class="nav-drawer-item active">Find My Place <span>↗</span></a>
+    <a href="pricing.html" class="nav-drawer-item">Qiymətlər <span>↗</span></a>
+    <a href="about.html" class="nav-drawer-item">Haqqımızda <span>↗</span></a>
+    <a href="contact.html" class="nav-drawer-item">Əlaqə <span>↗</span></a>
+    <a href="dashboard.html" class="nav-drawer-item">Panel <span>↗</span></a>
+    <div class="nav-drawer-footer">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="analyze.html" class="btn btn-primary" style="margin-top:20px;width:100%;justify-content:center" id="drawer-cta" data-i18n="cta.analyze">Analiz et ↗</a>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="drawer-overlay"></div>
+
+<div class="page-body">
+  <section class="page-hero">
+    <div class="container">
+      <div class="kicker reveal"><i></i> Find My Place</div>
+      <h1 class="reveal r2" style="font-family:'Manrope',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-top:12px;line-height:1.1">
+        Ən yaxşı lokasiyanı<br><em style="color:var(--orange);font-style:normal">kəşf et.</em>
+      </h1>
+      <p class="lede reveal r3" style="margin-top:12px">Biznes profilinizi yaradın və ReytUp sizin üçün ən yaxşı imkan sahələrini tapsın.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Business DNA Section -->
+      <div class="business-dna-section">
+        <div class="business-dna-header">
+          <div class="business-dna-icon">🧬</div>
+          <div>
+            <div class="business-dna-title">Business DNA Profili</div>
+            <div class="business-dna-subtitle">Biznesiniz üçün müvafiq parametrləri təyin edin</div>
+          </div>
+        </div>
+
+        <form id="business-dna-form">
+          <div class="dna-grid">
+            <div class="dna-field">
+              <label class="dna-label" for="dna-city">Şəhər *</label>
+              <input type="text" class="form-input" id="dna-city" placeholder="məs: Bakı" required>
+            </div>
+
+            <div class="dna-field">
+              <label class="dna-label" for="dna-business-type">Biznes növü *</label>
+              <select class="business-type-select" id="dna-business-type" required>
+                <option value="">Seçin...</option>
+                <option value="cafe">Kafe</option>
+                <option value="restaurant">Restoran</option>
+                <option value="retail">Pərakəndə mağaza</option>
+                <option value="beauty">Gözəllik salonu</option>
+                <option value="fitness">Fitness mərkəzi</option>
+                <option value="pharmacy">Əczaçılıq</option>
+                <option value="bakery">Bakery</option>
+                <option value="supermarket">Supermarket</option>
+                <option value="electronics">Elektronika</option>
+                <option value="clothing">Geyim mağazası</option>
+                <option value="other">Digər</option>
+              </select>
+            </div>
+
+            <div class="dna-field">
+              <label class="dna-label" for="dna-budget">Aylıq icarə büdcəsi (AZN)</label>
+              <input type="number" class="form-input" id="dna-budget" placeholder="məs: 2500" min="0">
+            </div>
+
+            <div class="dna-field">
+              <label class="dna-label" for="dna-target-audience">Hədəf auditoriya</label>
+              <select class="business-type-select" id="dna-target-audience">
+                <option value="general">Ümumi</option>
+                <option value="families">Ailələr</option>
+                <option value="students">Tələbələr</option>
+                <option value="professionals">Peşəkarlar</option>
+                <option value="tourists">Turistlər</option>
+              </select>
+            </div>
+
+            <div class="dna-field">
+              <label class="dna-label" for="dna-environment">Ümumiyyət növü</label>
+              <select class="business-type-select" id="dna-environment">
+                <option value="urban">Şəhər mərkəzi</option>
+                <option value="residential">Yaşayış məhəlləsi</option>
+                <option value="commercial">Ticarət mərkəzi</option>
+                <option value="suburban">Şəhər kənarı</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px;">
+            <label class="dna-label">Rəqabət tolerantlığı</label>
+            <input type="range" class="dna-range" id="dna-competition-tolerance" min="1" max="5" value="3">
+            <div class="dna-range-labels">
+              <span>Yüksək rəqabətə dözə bilirəm</span>
+              <span>Az rəqabət istəyirəm</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <label class="dna-label">Əlçatanlıq əhəmiyyəti</label>
+            <input type="range" class="dna-range" id="dna-accessibility-importance" min="1" max="5" value="4">
+            <div class="dna-range-labels">
+              <span>Vacib deyil</span>
+              <span>Çox vacib</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <label class="dna-label">Gözlənilən aylıq gəlir (AZN)</label>
+            <input type="number" class="form-input" id="dna-expected-revenue" placeholder="məs: 8000" min="0">
+          </div>
+
+          <div class="dna-summary" id="dna-summary" style="display:none;">
+            <div class="dna-summary-title">Biznes DNA Profili</div>
+            <div class="dna-summary-text" id="dna-summary-text"></div>
+          </div>
+
+          <div style="margin-top: 24px; display: flex; gap: 12px;">
+            <button type="submit" class="btn btn-primary" style="flex:1;justify-content:center">İmkanları tap ↗</button>
+            <button type="button" class="btn btn-ghost" id="reset-dna">Sıfırla</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div id="opportunity-results" style="display:none;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap;">
+          <h2 style="font-size:18px;font-weight:700;color:#fff">İmkan sahələri</h2>
+          <button class="btn btn-ghost sm" id="new-search">Yeni axtarış</button>
+        </div>
+
+        <div class="result-table-wrap">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>Sahə</th>
+                <th>İmkan skoru</th>
+                <th>Bazar konteksti</th>
+                <th>Rəqabət</th>
+                <th>Əlçatanlıq</th>
+                <th>Maliyyə uyğunluğu</th>
+                <th>Əminlik</th>
+                <th>Hərəkət</th>
+              </tr>
+            </thead>
+            <tbody id="opportunities-list">
+              <!-- Results will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div class="loading-card" id="loading-card">
+        <div class="loading-spinner-wrap">
+          <svg class="loading-ring" width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20" fill="none" stroke="var(--border-mid)" stroke-width="3"/>
+            <path d="M24 4 A20 20 0 0 1 44 24" fill="none" stroke="var(--orange)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="loading-title">İmkan sahələri axtarılır...</div>
+        <div class="loading-sub">Bazar siqnalları, rəqabət və əlçatanlıq təhlil edilir</div>
+        <div class="loading-steps">
+          <div class="loading-step active"><i></i>Bazar məlumatları toplanır</div>
+          <div class="loading-step"><i></i>Rəqabət təhlili</div>
+          <div class="loading-step"><i></i>Əlçatanlıq qiymətləndirilməsi</div>
+          <div class="loading-step"><i></i>Maliyyə uyğunluğu</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="global-footer">
+  <div class="container">
+    <div class="global-footer-grid">
+      <div class="footer-brand">
+        <strong>Reyt<span>Up</span></strong>
+        <p data-i18n="footer.desc">Lokasiya, rəqabət və maliyyə ssenarisini bir yerdə oxuyan qərar platforması.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.platform">Platforma</h4>
+        <a href="analyze.html" data-i18n="nav.analysis">Analiz</a>
+        <a href="find-my-place.html">Find My Place</a>
+        <a href="dashboard.html" data-i18n="nav.dashboard">Panel</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Qiymətlər</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.company">Şirkət</h4>
+        <a href="about.html" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" data-i18n="nav.contact">Əlaqə</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Məxfilik</a>
+        <a href="terms.html" data-i18n="footer.terms">Şərtlər</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4 data-i18n="footer.newsletter">Yeni imkanlardan xəbərdar ol</h4>
+        <form data-newsletter-form class="footer-newsletter-form">
+          <input type="email" name="email" required placeholder="Email ünvanın" data-i18n-placeholder="footer.emailPlaceholder">
+          <button type="submit">↗</button>
+        </form>
+        <div class="footer-contact-info" data-i18n="footer.location">Bakı, Azərbaycan</div>
+        <a class="footer-instagram-link" href="https://www.instagram.com/reytup.ai/" target="_blank" rel="noopener noreferrer" aria-label="ReytUp Instagram @reytup.ai profilini aç"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>@reytup.ai</span><span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="global-footer-bottom">
+      <span data-i18n="footer.rights">© 2026 ReytUp. Bütün hüquqlar qorunur.</span>
+      <span>Better places. Clearer decisions.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="page-i18n.js"></script>
+<script src="workspace-shell.js" defer></script>
+<script src="app.js" defer></script>
+<script src="find-my-place.js" defer></script>
+<script src="design-enhance.js"></script>
+<script src="assistant.js" defer></script>
+</body>
+</html>

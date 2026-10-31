@@ -1,0 +1,13 @@
+REYTUP 4.2 — ELITE EDITION
+
+Windows:
+1. Extract the whole ZIP into a new folder, for example D:\ReytUp-4.2-Elite.
+2. Keep the included .env file in the same folder as package.json and server.js.
+3. Open PowerShell in that folder.
+4. Run: npm start
+5. Open: http://localhost:4173
+
+The included .env and data/.jwt-secret are preserved and must remain private.
+Do not upload this ZIP publicly or commit .env to Git.
+
+Requirements: Node.js 22.16 or newer.

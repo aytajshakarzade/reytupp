@@ -1,0 +1,15 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Runtime data and private credentials
+data/*.db
+data/*.db-*
+data/.jwt-secret
+
+# Dependencies and OS files
+node_modules/
+.DS_Store
+Thumbs.db
+*.log

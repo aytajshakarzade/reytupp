@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daxil ol — ReytUp</title>
+<meta name="description" content="ReytUp hesabınıza daxil olun.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="reytup-signal.css">
+  <link rel="stylesheet" href="atelier-refresh.css">
+  <link rel="stylesheet" href="elite-polish.css">
+  <link rel="stylesheet" href="typography-system.css?v=20261031-1">
+</head>
+<body>
+
+<!-- UNIFIED NAVBAR -->
+<header class="site-nav-bar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Reyt<em>Up</em></a>
+    <nav class="nav-links" aria-label="Əsas naviqasiya">
+      <a href="index.html" class="nav-link" data-i18n="nav.home">Ana səhifə</a>
+      <a href="find-my-place.html" class="nav-link" data-i18n="nav.findMyPlace">Find My Place</a>
+      <a href="analyze.html" class="nav-link" data-i18n="nav.analysis">Analiz</a>
+      <a href="location-battle.html" class="nav-link" data-i18n="nav.locationBattle">Location Battle</a>
+      <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+      <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+      <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
+      <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Panel</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="register.html" class="nav-auth-link" data-i18n="nav.register" data-i18n="nav.register">Qeydiyyat</a>
+      <a href="analyze.html" class="nav-cta-btn" data-i18n="cta.analyze">Analiz et ↗</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menyu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <a href="index.html" class="nav-drawer-item" data-i18n-before="nav.home">Ana səhifə <span>↗</span></a>
+    <a href="analyze.html" class="nav-drawer-item">Analiz <span>↗</span></a>
+    <a href="pricing.html" class="nav-drawer-item">Qiymətlər <span>↗</span></a>
+    <a href="about.html" class="nav-drawer-item">Haqqımızda <span>↗</span></a>
+    <a href="contact.html" class="nav-drawer-item">Əlaqə <span>↗</span></a>
+    <a href="dashboard.html" class="nav-drawer-item">Panel <span>↗</span></a>
+    <div class="nav-drawer-footer">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="register.html" class="btn btn-ghost" style="margin-top:20px;width:100%;justify-content:center">Qeydiyyat ↗</a>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="drawer-overlay"></div>
+
+<main class="auth-page">
+  <div class="auth-card">
+    <h1 data-i18n="auth.loginTitle">Xoş gəlmisən.</h1>
+    <p class="auth-sub" data-i18n="auth.loginSubtitle">Hesabınıza daxil olun</p>
+
+    <form id="login-form">
+      <div class="form-field">
+        <label for="email" data-i18n="auth.emailLabel">Email</label>
+        <input id="email" name="email" type="email" required placeholder="email@nümunə.com" autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label for="password" data-i18n="auth.passwordLabel">Şifrə</label>
+        <input id="password" name="password" type="password" required placeholder="Şifrəniz" data-i18n-placeholder="auth.passwordPlaceholder" autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary big" style="width:100%;margin-top:8px" data-i18n="auth.loginBtn">Giriş et ↗</button>
+    </form>
+
+    <p class="auth-footer"><span data-i18n="auth.noAccount">Hesabın yoxdur?</span> <a href="register.html" data-i18n="auth.goRegister">Qeydiyyatdan keç</a></p>
+  </div>
+</main>
+
+<script src="i18n.js"></script>
+<script src="page-i18n.js"></script>
+<script src="app.js" defer></script>
+<script src="design-enhance.js"></script>
+<script src="assistant.js" defer></script>
+</body>
+</html>

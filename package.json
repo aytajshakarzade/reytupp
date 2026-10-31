@@ -1,0 +1,19 @@
+{
+  "name": "reytup",
+  "version": "4.2.0",
+  "private": true,
+  "description": "ReytUp — location intelligence, competition signals and scenario analysis for business locations.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node start.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js && node --check billing-persistence.js && node --check billing-customer.js && node --check listing-parser.js && node --check analysis-metrics.js && node --check start.js && node --check database.js && node --check overpass.js && node --check public/app.js && node --check public/analyze.js && node --check public/assistant.js && node --check public/design-enhance.js && node --check public/find-my-place.js && node --check public/i18n.js && node --check public/location-battle.js && node --check public/page-i18n.js && node --check public/workspace-shell.js && node --check tests/analysis-form-contract.test.js && node --check tests/listing-parser.test.js && node --check tests/smoke.test.js && node --check tests/overpass.test.js && node --check tests/analysis-metrics.test.js && node --check tests/billing-persistence.test.js && node --check tests/billing-customer.test.js && node --check tests/app-origin.test.js && node --check plans.js && node --check groq-model.js && node --check tests/plans.test.js && node --check tests/groq-model.test.js && node --check usage-sql.js && node --check tests/postgres-adapter.test.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.5"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>İş masası — ReytUp</title>
+<meta name="description" content="ReytUp lokasiya kəşfiyyatı iş masası. Analizləri, bazar siqnallarını və planınızı idarə edin.">
+<meta name="theme-color" content="#091412">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main.css"><link rel="stylesheet" href="premium.css"><link rel="stylesheet" href="reytup-signal.css">
+<link rel="stylesheet" href="atelier-refresh.css"><link rel="stylesheet" href="elite-polish.css"><link rel="stylesheet" href="premium-dashboard.css">
+  <link rel="stylesheet" href="sidebar-polish.css?v=20261031-1">
+  <link rel="stylesheet" href="reytup-experience.css?v=20261031-2">
+  <link rel="stylesheet" href="typography-system.css?v=20261031-1">
+</head>
+<body class="dashboard-page">
+<div class="dashboard-app-shell">
+  <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="İş masası naviqasiyası">
+    <a class="dashboard-brand" href="index.html"><span class="brand-mark">R</span><span>reyt<span class="brand-lime">up</span><small>LOCATION INTELLIGENCE</small></span></a>
+    <div class="sidebar-group-label" data-i18n="dashboard.groupWorkspace">İŞ MƏKANI</div>
+    <nav class="dashboard-nav">
+      <a class="dashboard-nav-link active" href="dashboard.html"><span class="nav-icon">⌂</span><span data-i18n="dashboard.overview">İcmal</span><i></i></a>
+      <a class="dashboard-nav-link" href="analyze.html"><span class="nav-icon">⌖</span><span data-i18n="nav.analysis">Analiz laboratoriyası</span><i></i></a>
+      <a class="dashboard-nav-link" href="find-my-place.html"><span class="nav-icon">◎</span><span data-i18n="nav.findMyPlace">Məkanımı tap</span><i></i></a>
+      <a class="dashboard-nav-link" href="location-battle.html"><span class="nav-icon">⇄</span><span data-i18n="nav.locationBattle">Lokasiya müqayisəsi</span><i></i></a>
+    </nav>
+    <div class="sidebar-group-label" data-i18n="dashboard.groupManage">İDARƏETMƏ</div>
+    <nav class="dashboard-nav">
+      <a class="dashboard-nav-link" href="pricing.html"><span class="nav-icon">◇</span><span data-i18n="nav.pricing">Plan və ödəniş</span><i></i></a>
+      <a class="dashboard-nav-link" href="about.html"><span class="nav-icon">⌘</span><span data-i18n="nav.about">Haqqımızda</span><i></i></a>
+      <a class="dashboard-nav-link" href="contact.html"><span class="nav-icon">✉</span><span data-i18n="nav.contact">Əlaqə</span><i></i></a>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <div class="sidebar-help-card"><span class="help-orb">✳</span><strong data-i18n="dashboard.needHelp">Kömək lazımdır?</strong><p data-i18n="dashboard.helpDesc">ReytUp köməkçisi analizini izah edə bilər.</p><button type="button" data-open-assistant data-i18n="dashboard.askAssistant">Köməkçiyə sual ver ↗</button></div>
+    <div class="sidebar-profile"><div class="profile-avatar" id="sidebar-avatar">R</div><div class="profile-meta"><strong id="sidebar-user-name">ReytUp hesabı</strong><span id="sidebar-user-plan">Free plan</span></div><button class="profile-logout" data-logout type="button" aria-label="Hesabdan çıxış"><span aria-hidden="true">↪</span><span class="logout-label">Çıxış</span></button></div>
+  </aside>
+  <button type="button" class="dashboard-sidebar-overlay" id="dashboard-sidebar-overlay" aria-label="Menyunu bağla" tabindex="-1"></button>
+
+  <main class="dashboard-main">
+    <header class="dashboard-topbar">
+      <button type="button" class="dashboard-mobile-menu" id="dashboard-mobile-menu" aria-label="Naviqasiya menyusunu aç" aria-expanded="false" aria-controls="dashboard-sidebar">☰</button>
+      <div><div class="topbar-breadcrumb"><a href="index.html">ReytUp</a><span>/</span><b data-i18n="dashboard.overview">İcmal</b></div><div class="topbar-status"><span class="online-dot"></span><span data-i18n="dashboard.systemLive">Analiz sistemi aktivdir</span></div></div>
+      <div class="topbar-actions"><div class="dash-lang-switch" aria-label="Dil seçimi"><button type="button" data-lang="az">AZ</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="ru">RU</button></div><a class="btn btn-primary dashboard-create-btn" href="analyze.html"><span>＋</span><span data-i18n="cta.newAnalysis">Yeni analiz</span></a><div class="topbar-avatar" id="topbar-avatar">R</div></div>
+    </header>
+
+    <div class="dashboard-content">
+      <section class="dash-hero">
+        <div class="dash-hero-copy">
+          <div class="eyebrow-line"><span class="eyebrow-dot"></span><span data-i18n="dashboard.workspaceLabel">ŞƏXSİ İŞ MƏKANIN</span></div>
+          <div class="dashboard-greeting" id="dashboard-greeting" data-i18n="dashboard.greeting">Xoş gəldin</div>
+          <h1><span id="dashboard-name">—</span><span class="heading-punct">.</span></h1>
+          <h2 data-i18n="dashboard.heroTitle">Lokasiya qərarlarını bir baxışda idarə et.</h2>
+          <p id="dashboard-cont-loc" data-i18n="dashboard.heroDesc">Analizlərin, bazar siqnalların və hesab göstəricilərin bir məkanda.</p>
+          <div class="dash-hero-actions"><a href="analyze.html" class="btn btn-primary"><span>＋</span><span data-i18n="dashboard.quickAnalyze">Yeni lokasiya analizi</span></a><a href="location-battle.html" class="btn btn-ghost"><span>⇄</span><span data-i18n="dashboard.quickCompare">Lokasiyaları müqayisə et</span></a></div>
+        </div>
+        <aside class="dash-hero-aside decision-passport-wrap" aria-label="ReytUp qərar pasportu">
+          <div class="decision-passport-card">
+            <div class="passport-topline">
+              <div class="passport-brand"><span class="passport-brand-mark">R</span><span><strong>REYTUP</strong><small data-i18n="dashboard.passportLabel">QƏRAR PASPORTU</small></span></div>
+              <span class="passport-date" id="dashboard-date">—</span>
+            </div>
+            <div class="passport-location">
+              <span class="passport-pin">⌖</span>
+              <span><small data-i18n="dashboard.passportLatest">SON ANALİZ</small><strong id="passport-location" data-i18n="dashboard.passportEmpty">İlk analizini başlat</strong></span>
+            </div>
+            <div class="passport-score-row">
+              <div class="passport-score-copy"><small data-i18n="dashboard.passportScore">QƏRAR SKORU</small><strong id="passport-score">—<em>/100</em></strong><span id="passport-verdict" class="passport-verdict" data-i18n="dashboard.passportWaiting">Nəticə gözlənilir</span></div>
+              <div class="passport-score-ring" aria-label="Skor göstəricisi"><svg viewBox="0 0 72 72" aria-hidden="true"><circle class="passport-ring-track" cx="36" cy="36" r="29"/><circle class="passport-ring-value" id="passport-score-ring" cx="36" cy="36" r="29"/></svg><span id="passport-score-ring-label">—</span></div>
+            </div>
+            <div class="passport-metrics">
+              <div><small data-i18n="dashboard.passportSources">MƏNBƏ ƏHATƏSİ</small><strong id="passport-source-count">—/3</strong></div>
+              <div><small data-i18n="dashboard.passportRisks">RİSK SİQNALLARI</small><strong id="passport-risk-count">—</strong></div>
+            </div>
+            <div class="passport-next-step"><span class="passport-next-icon">✳</span><span><small data-i18n="dashboard.passportNextTitle">NÖVBƏTİ AĞILLI ADDIM</small><strong id="passport-next-step" data-i18n="dashboard.passportEmptyNext">Analizdən sonra tövsiyə görünəcək.</strong></span></div>
+            <div class="passport-actions"><button type="button" id="passport-copy" disabled><span>⧉</span><span data-i18n="dashboard.passportCopy">Qərar xülasəsini köçür</span></button><a id="passport-open" href="analyze.html" class="passport-open-link" data-i18n="dashboard.passportOpen">Analizə keç ↗</a></div>
+            <p class="passport-disclaimer" data-i18n="dashboard.passportDisclaimer">Mənbə əhatəsi məlumatın cavabını göstərir, biznes uğurunu zəmanət etmir.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="dash-kpi-grid" aria-label="Əsas göstəricilər">
+        <article class="dash-kpi-card kpi-primary"><div class="dash-kpi-top"><span data-i18n="dashboard.totalAnalyses">Ümumi analiz</span><span class="dash-kpi-icon">⌖</span></div><strong id="analysis-total">—</strong><small data-i18n="dashboard.savedLocations">Yadda saxlanılmış lokasiya</small><div class="kpi-spark spark-one"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="dash-kpi-card"><div class="dash-kpi-top"><span data-i18n="dashboard.latestScore">Son analiz skoru</span><span class="dash-kpi-icon">↗</span></div><strong id="dashboard-latest-score">—</strong><small id="dashboard-latest-address" data-i18n="dashboard.noRecent">Hələ son analiz yoxdur</small><div class="kpi-spark spark-two"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="dash-kpi-card"><div class="dash-kpi-top"><span data-i18n="dashboard.avgScore">Orta skor</span><span class="dash-kpi-icon">◌</span></div><strong id="dashboard-average-score">—</strong><small data-i18n="dashboard.scoreTrendDesc">Son analizlərinin nəticələri</small><div class="kpi-spark spark-three"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="dash-kpi-card"><div class="dash-kpi-top"><span data-i18n="dashboard.strongLocations">70+ skorlu lokasiya</span><span class="dash-kpi-icon">✦</span></div><strong id="dashboard-strong-locations">—</strong><small data-i18n="dashboard.strongLocations">70+ skorlu lokasiya</small><div class="kpi-spark spark-four"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      </section>
+
+      <section class="dash-overview-grid">
+        <article class="dash-panel dash-chart-panel">
+          <div class="dash-panel-heading"><div><span class="dash-panel-kicker" data-i18n="dashboard.scoreTrend">Skor dinamikası</span><h2 data-i18n="dashboard.scoreTrendDesc">Son analizlərinin nəticələri</h2></div><span class="dash-panel-meta" id="dashboard-chart-count">0</span></div>
+          <div id="dashboard-score-chart" class="dash-score-chart"><div class="dash-chart-empty" data-i18n="dashboard.noScoreYet">Skor qrafiki üçün analiz tarixçəsi lazımdır.</div></div>
+          <div class="dash-chart-foot"><span><i class="chart-legend-dot"></i><span data-i18n="dashboard.lastAnalysis">Son analiz</span></span><span id="dashboard-trend-caption">—</span></div>
+        </article>
+        <article class="dash-panel dash-usage-panel">
+          <div class="dash-panel-heading"><div><span class="dash-panel-kicker" data-i18n="dashboard.usageTitle">Plan istifadəsi</span><h2 id="dashboard-plan">—</h2></div><span class="usage-plan-mark">◇</span></div>
+          <div class="usage-block"><div class="usage-label-row"><span data-i18n="dashboard.analysisQuota">Aylıq analiz limiti</span><strong id="dashboard-usage-analyses-value">—</strong></div><div class="usage-track"><span id="dashboard-usage-analyses-bar"></span></div></div>
+          <div class="usage-block"><div class="usage-label-row"><span data-i18n="dashboard.aiQuota">Gündəlik AI sorğuları</span><strong id="dashboard-usage-ai-value">—</strong></div><div class="usage-track ai-track"><span id="dashboard-usage-ai-bar"></span></div></div>
+          <div class="usage-foot"><span id="dashboard-plan-limit">—</span><button type="button" class="billing-recover-button hidden" id="billing-recover-button" data-i18n="billing.recoverButton">Ödəniş etmisiniz? Planı bərpa et ↗</button></div>
+          <div class="usage-actions"><a class="text-link" href="pricing.html" data-i18n="cta.seePlans">Planları gör ↗</a><button type="button" class="text-link hidden" id="billing-portal-button" data-i18n="dashboard.manageBilling">Abunəliyi idarə et</button></div>
+        </article>
+      </section>
+
+      <section class="dash-overview-grid dash-overview-grid-lower">
+        <article class="dash-panel dash-sources-panel">
+          <div class="dash-panel-heading"><div><span class="dash-panel-kicker" data-i18n="dashboard.sourceTitle">Məlumat mənbələri</span><h2 data-i18n="dashboard.sourceDesc">Son analizdə istifadə olunan mənbələr</h2></div><span class="source-orb">◎</span></div>
+          <div id="dashboard-source-health" class="dash-source-list"><div class="dash-chart-empty" data-i18n="dashboard.noSourceYet">Mənbə statusu ilk analizdən sonra görünəcək.</div></div>
+          <p class="dash-source-foot" id="dashboard-source-note" data-i18n="dashboard.signalNote">Nəticələr məlumat mənbələrinin əhatəsindən asılıdır; skor uğur ehtimalı deyil.</p>
+        </article>
+        <article class="dash-panel dash-shortcuts-panel">
+          <div class="dash-panel-heading"><div><span class="dash-panel-kicker" data-i18n="dashboard.quickTitle">Sürətli keçidlər</span><h2 data-i18n="dashboard.quickTitle">Sürətli keçidlər</h2></div><span class="source-orb">↗</span></div>
+          <div class="dash-shortcut-grid">
+            <a href="analyze.html"><span class="shortcut-icon">⌖</span><span data-i18n="dashboard.quickAnalyze">Yeni lokasiya analizi</span><b>↗</b></a>
+            <a href="find-my-place.html"><span class="shortcut-icon">◎</span><span data-i18n="dashboard.quickFind">Mənim üçün məkan tap</span><b>↗</b></a>
+            <a href="location-battle.html"><span class="shortcut-icon">⇄</span><span data-i18n="dashboard.quickCompare">Lokasiyaları müqayisə et</span><b>↗</b></a>
+            <button type="button" data-open-assistant><span class="shortcut-icon">✳</span><span data-i18n="dashboard.quickAssistant">AI köməkçi ilə danış</span><b>↗</b></button>
+          </div>
+        </article>
+      </section>
+
+      <section class="dash-history-section">
+        <div class="dashboard-section-heading"><div><div class="eyebrow-line"><span class="eyebrow-dot"></span><span data-i18n="dashboard.workspaceLabel">ŞƏXSİ İŞ MƏKANIN</span></div><h2 data-i18n="dashboard.historyTitle">Analiz tarixçəsi</h2><p data-i18n="dashboard.historySubtitle">Yoxladığın lokasiyalar və qərar siqnalları bir yerdə.</p></div><a class="text-link" href="analyze.html" data-i18n="dashboard.startNew">Yeni analiz başlat ↗</a></div>
+        <div class="dashboard-history-panel"><div id="analysis-history"><div class="empty-state"><div class="empty-title" data-i18n="dashboard.loading">Yüklənir...</div></div></div></div>
+      </section>
+
+      <section class="dash-bottom-banner">
+        <div class="dash-banner-icon">✳</div><div><span data-i18n="dashboard.insightTag">REYTUP İPUCU</span><h3 data-i18n="dashboard.insightTitle">Skor qərarın özü deyil.</h3><p data-i18n="dashboard.insightDesc">Xəritə siqnallarını yerində müşahidə, real icarə şərtləri və müştəri araşdırması ilə birləşdir.</p></div><a href="about.html" class="text-link" data-i18n="nav.about">Haqqımızda</a>
+      </section>
+      <footer class="dashboard-footer"><span>© 2026 ReytUp</span><span>Better places. Clearer decisions.</span><a href="privacy.html" data-i18n="footer.privacy">Məxfilik</a><a href="terms.html" data-i18n="footer.terms">Şərtlər</a><a class="footer-instagram-link" href="https://www.instagram.com/reytup.ai/" target="_blank" rel="noopener noreferrer" aria-label="ReytUp Instagram @reytup.ai profilini aç"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>@reytup.ai</span><span aria-hidden="true">↗</span></a></footer>
+    </div>
+  </main>
+</div>
+<script src="i18n.js"></script><script src="page-i18n.js"></script><script src="app.js" defer></script><script src="design-enhance.js" defer></script><script src="assistant.js" defer></script>
+</body></html>

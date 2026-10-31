@@ -1,0 +1,27 @@
+REYTUP 4.2 — STRIPE BILLING / LOCATION FALLBACK / PREMIUM PACKAGE FIX
+
+Stripe billing
+- Extracted subscription persistence into billing-persistence.js and covered it with unit tests.
+- A verified, paid Checkout session and authenticated recovery using an exact Stripe customer-email match plus a configured active Price ID can replace a stale Stripe customer ID left by an older failed attempt.
+- Webhook Checkout and subscription events now repair customer links when they carry the server-set user metadata/client reference.
+- Ordinary subscription refreshes still reject a Stripe customer mismatch and cannot overwrite another account's customer link.
+- Checkout verification now logs the exact failed persistence condition (stored/effective plan, customer link, subscription link, status and period end) without exposing secret keys.
+- Webhook signature verification and event idempotency are retained.
+- .env was preserved byte-for-byte; the local STRIPE_WEBHOOK_SECRET remains an external PowerShell/hosting environment variable, not hard-coded into the application.
+
+Location analysis
+- When only a capped Google Places sample is available but Google Places returns a nearby-business sample, ReytUp now calculates a provisional competition score from those observed results rather than displaying an empty metric.
+- The interface and AI context label it as a Google Places sample with low confidence, not a complete or unique competitor count. Fewer than 20 results do not prove the sample is exhaustive.
+- If available place sources return no verified nearby records, the metric remains unscored rather than being filled with invented data.
+- Existing separate Google transport search, map records, distance calculations, source notes and finance scenario are retained.
+
+Package and setup
+- Added tests for sample-based competition scoring and stale Stripe customer-link repair.
+- Stripe CLI setup documentation includes --events for CLI versions that require it.
+- Startup guide tells Windows users to run npm install before npm start.
+- The PostgreSQL driver pg is declared in package.json/package-lock.json; run npm install after extracting the ZIP to install it locally.
+
+Verification
+- npm run check: PASS
+- npm test: 33/33 PASS
+- PostgreSQL and webhook logic were covered by unit/smoke tests; live Supabase credentials, live Stripe Checkout and live map-provider responses still need confirmation in the user's own environment.

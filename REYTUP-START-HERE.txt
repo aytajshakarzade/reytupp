@@ -1,0 +1,21 @@
+REYTUP 4.2 — PREMIUM OPERATIONAL UPDATE
+
+1) ZIP-i yeni qovluğa çıxart.
+2) PowerShell-i reytup_premium_build qovluğunda aç.
+3) Asılılıqları quraşdır: npm install
+4) Ayrı PowerShell-də STRIPE-WEBHOOK-SETUP-AZ.md faylındakı stripe listen əmrini başladıb açıq saxla.
+5) CLI-nin göstərdiyi whsec_... dəyərini .env-dəki STRIPE_WEBHOOK_SECRET ilə müqayisə et. Fərqlidirsə, server pəncərəsində $env:STRIPE_WEBHOOK_SECRET = 'whsec_...' təyin et; eynidirsə əlavə dəyişiklik lazım deyil.
+6) Serveri başlad: npm start
+7) Aç: http://localhost:4173
+
+VACİB
+- Bu göndərişdə .env faylı istifadəçinin əvvəlki xahişinə uyğun ZIP-ə daxildir. Şəxsi API açarları, Stripe secret-ləri və Supabase bağlantı məlumatı ehtiva edə bilər. ZIP-i heç kimə ötürmə, ictimai repoya yükləmə və paylaşma.
+- .env faylı bu yeniləmə zamanı dəyişdirilməyib. Supabase Database Password yalnız təhlükəsiz PowerShell prompt-una daxil edilməlidir.
+- İlk başladılmadan əvvəl npm install mütləq icra edilməlidir. package.json / package-lock.json PostgreSQL üçün pg driver asılılığını saxlayır.
+- Groq AI model inference üçündür; canlı məkan faktları Google Places və açıq xəritə qeydləri kimi mənbələrdən alınır. Groq mənbədə olmayan obyekt, rəqib, məsafə və ya trafik məlumatı uydurmamalıdır.
+- Google Places nəticələri mövcud olduqda, ReytUp müşahidə edilən yaxın obyektlərdən ilkin rəqabət indeksi hesablayır. Nümunə 20 nəticə ilə məhdudlaşa bilər və tam unikal rəqib sayı kimi təqdim edilmir. Mənbədə təsdiqlənməyən rəqəm uydurulmur; istifadəçiyə texniki servis xətası deyil, mənbə əhatəsinin qeydi göstərilir.
+- Təsdiqlənmiş Stripe Checkout hesabdakı köhnə müştəri ID-sini yenidən bağlaya və ödənişli planı doğrulanmış Price ID əsasında bazaya yaza bilir. Webhook yenilənmə, ləğv və uğursuz ödəniş sinxronizasiyası üçün lazımdır.
+- Yerli Stripe testində STRIPE-WEBHOOK-SETUP-AZ.md faylındakı --events parametrli CLI əmrinə əməl et.
+- Yoxlama: npm run check və npm test
+
+TEST NƏTİCƏSİ (bu ZIP hazırlanarkən): 33/33 test uğurlu, npm run check uğurlu.

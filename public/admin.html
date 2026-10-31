@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — ReytUp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="reytup-signal.css">
+  <link rel="stylesheet" href="atelier-refresh.css">
+  <link rel="stylesheet" href="elite-polish.css">
+  <link rel="stylesheet" href="typography-system.css?v=20261031-1">
+</head>
+<body>
+<!-- UNIFIED NAVBAR -->
+<header class="site-nav-bar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Reyt<em>Up</em></a>
+    <nav class="nav-links" aria-label="Əsas naviqasiya">
+      <a href="index.html" class="nav-link">Ana səhifə</a>
+      <a href="dashboard.html" class="nav-link">Panel</a>
+      <a href="admin.html" class="nav-link active">Admin</a>
+    </nav>
+    <div class="nav-right">
+      <button type="button" class="nav-auth-link" data-logout>Çıxış</button>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menyu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <a href="index.html" class="nav-drawer-item">Ana səhifə <span>↗</span></a>
+    <a href="dashboard.html" class="nav-drawer-item">Panel <span>↗</span></a>
+    <a href="admin.html" class="nav-drawer-item active">Admin <span>↗</span></a>
+    <div class="nav-drawer-footer">
+      <button type="button" class="nav-auth-link" data-logout style="margin-top:20px;width:100%;justify-content:center">Çıxış</button>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="drawer-overlay"></div>
+<div class="page-body">
+  <section style="padding:48px 0 32px;border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="kicker"><i></i> Admin Panel</div>
+      <h1 style="font-family:'Manrope',sans-serif;font-size:32px;font-weight:800;color:#fff;margin-top:12px">Mesajlar</h1>
+    </div>
+  </section>
+  <section style="padding:32px 0 80px">
+    <div class="container">
+      <div id="admin-messages">
+        <div class="empty-state">
+          <div class="empty-icon">⏳</div>
+          <div class="empty-title">Yüklənir...</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="i18n.js"></script>
+<script src="page-i18n.js"></script>
+<script src="app.js" defer></script>
+<script src="design-enhance.js"></script>
+<script src="assistant.js" defer></script>
+</body>
+</html>

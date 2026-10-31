@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qiymətlər — ReytUp</title>
+<meta name="description" content="ReytUp planları. Bir lokasiya ilə pulsuz başla. İstədiyin vaxt yüksəlt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="premium.css">
+<link rel="stylesheet" href="reytup-signal.css">
+<link rel="stylesheet" href="workspace-shell.css">
+  <link rel="stylesheet" href="atelier-refresh.css">
+  <link rel="stylesheet" href="elite-polish.css">
+  <link rel="stylesheet" href="sidebar-polish.css?v=20261031-1">
+  <link rel="stylesheet" href="typography-system.css?v=20261031-1">
+</head>
+<body>
+
+<!-- UNIFIED NAVBAR -->
+<header class="site-nav-bar" id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Reyt<em>Up</em></a>
+    <nav class="nav-links" aria-label="Əsas naviqasiya">
+      <a href="index.html" class="nav-link" data-i18n="nav.home">Ana səhifə</a>
+      <a href="find-my-place.html" class="nav-link" data-i18n="nav.findMyPlace">Find My Place</a>
+      <a href="analyze.html" class="nav-link" data-i18n="nav.analysis">Analiz</a>
+      <a href="location-battle.html" class="nav-link" data-i18n="nav.locationBattle">Location Battle</a>
+      <a href="pricing.html" class="nav-link active" data-i18n="nav.pricing">Qiymətlər</a>
+      <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+      <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
+      <a href="dashboard.html" class="nav-link" data-i18n="nav.dashboard">Panel</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="login.html" class="nav-auth-link" id="header-login" data-i18n="nav.signin" data-i18n="nav.signin">Daxil ol</a>
+      <a href="dashboard.html" class="nav-auth-link hidden" id="header-dashboard" data-i18n="nav.dashboard">Panel</a>
+      <button type="button" class="nav-auth-link hidden" id="header-logout" data-logout data-i18n="nav.logout">Çıxış</button>
+      <a href="analyze.html" class="nav-cta-btn" data-i18n="cta.startAnalysisFull">Analizə başla ↗</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menyu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="mobile-drawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <a href="index.html" class="nav-drawer-item" data-i18n-before="nav.home">Ana səhifə <span>↗</span></a>
+    <a href="analyze.html" class="nav-drawer-item">Analiz <span>↗</span></a>
+    <a href="pricing.html" class="nav-drawer-item active">Qiymətlər <span>↗</span></a>
+    <a href="about.html" class="nav-drawer-item">Haqqımızda <span>↗</span></a>
+    <a href="contact.html" class="nav-drawer-item">Əlaqə <span>↗</span></a>
+    <a href="dashboard.html" class="nav-drawer-item">Panel <span>↗</span></a>
+    <div class="nav-drawer-footer">
+      <div class="lang-switch">
+        <button type="button" data-lang="az">AZ</button>
+        <span></span>
+        <button type="button" data-lang="en">EN</button>
+        <span></span>
+        <button type="button" data-lang="ru">RU</button>
+      </div>
+      <a href="analyze.html" class="btn btn-primary" style="margin-top:20px;width:100%;justify-content:center" id="drawer-cta" data-i18n="cta.startAnalysisFull">Analizə başla ↗</a>
+    </div>
+  </div>
+</div>
+<div class="nav-overlay" id="drawer-overlay"></div>
+
+<div class="page-body">
+  <section class="page-hero">
+    <div class="container">
+      <div class="kicker reveal"><i></i> <span data-i18n="pricing.kicker">Qiymətlər</span></div>
+      <h1 class="reveal r2" style="font-family:'Manrope',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:#fff;letter-spacing:-0.03em;margin-top:12px;line-height:1.1">
+        <span data-i18n="pricing.title">Şəffaf qiymətlər.</span><br><em style="color:var(--orange);font-style:normal" data-i18n="pricing.subtitle">Gizli xərc yoxdur.</em>
+      </h1>
+      <p class="lede reveal r3" style="margin-top:12px" data-i18n="pricing.desc">Bir lokasiya ilə pulsuz başla. İstədiyin vaxt yüksəlt.</p>
+      <div style="margin-top:16px;font-size:13px;color:var(--text-3)"><span data-i18n="pricing.currentPlan">Aktiv plan:</span> <b id="current-plan-label" style="color:var(--text-1)">—</b></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="pricing-grid" id="billing-buttons">
+
+        <!-- Free -->
+        <div class="price-card" data-plan-card="free">
+          <div class="pricing-current-badge hidden" data-i18n="pricing.currentPlanBadge">Cari planınız</div>
+          <h3>Free</h3>
+          <div class="price" data-price-display="free">0 <small>₼</small></div>
+          <div class="price-period">aylıq</div>
+          <ul class="plan-feature-list">
+            <li data-plan-feature="analyses">Ayda 3 analiz</li>
+            <li data-plan-feature="radius">500 m radius</li>
+            <li data-plan-feature="comparisons">Sorğu başına 2 lokasiya</li>
+            <li data-plan-feature="ai">AI köməkçisi · gündə 5 sorğu</li>
+            <li data-plan-feature="history">7 günlük tarixçə</li>
+            <li data-plan-feature="pdf">PDF ixracı yoxdur</li>
+          </ul>
+          <button class="btn btn-ghost plan-cta" data-plan-button="free" data-i18n="cta.startFree">Free ilə başla</button>
+        </div>
+
+        <!-- Professional -->
+        <div class="price-card featured" data-plan-card="pro">
+          <div class="badge" data-i18n="pricing.mostPopular">Ən populyar</div>
+          <div class="pricing-current-badge hidden" style="color:var(--green);background:var(--green-dim);border-radius:100px;padding:3px 10px;font-size:10px;font-weight:700;display:inline-block;margin-bottom:8px">Cari planınız</div>
+          <h3>Professional</h3>
+          <div class="price" data-price-display="pro">—</div>
+          <div class="price-period" data-period-display="pro">Stripe qiyməti yüklənir…</div>
+          <ul class="plan-feature-list">
+            <li data-plan-feature="analyses">Ayda 50 analiz</li>
+            <li data-plan-feature="radius">1.2 km radius</li>
+            <li data-plan-feature="comparisons">Sorğu başına 6 lokasiya</li>
+            <li data-plan-feature="ai">AI köməkçisi · gündə 30 sorğu</li>
+            <li data-plan-feature="history">90 günlük tarixçə</li>
+            <li data-plan-feature="pdf">PDF hesabat və ixrac</li>
+          </ul>
+          <button class="btn btn-primary plan-cta" data-plan-button="pro" data-i18n="cta.switchPro">Pro-ya keç ↗</button>
+        </div>
+
+        <!-- Business -->
+        <div class="price-card" data-plan-card="business">
+          <div class="pricing-current-badge hidden">Cari planınız</div>
+          <h3>Business</h3>
+          <div class="price" data-price-display="business">—</div>
+          <div class="price-period" data-period-display="business">Stripe qiyməti yüklənir…</div>
+          <ul class="plan-feature-list">
+            <li data-plan-feature="analyses">Ayda 200 analiz</li>
+            <li data-plan-feature="radius">3 km radius</li>
+            <li data-plan-feature="comparisons">Sorğu başına 9 lokasiya</li>
+            <li data-plan-feature="ai">AI köməkçisi · gündə 100 sorğu</li>
+            <li data-plan-feature="history">Limitsiz tarixçə</li>
+            <li data-plan-feature="pdf">PDF hesabat və ixrac</li>
+          </ul>
+          <button class="btn btn-secondary plan-cta" data-plan-button="business" data-i18n="cta.switchBusiness">Business-ə keç ↗</button>
+        </div>
+
+      </div>
+
+      <!-- Billing note -->
+      <div style="margin-top:20px;padding:16px 20px;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:13px;color:var(--text-2);max-width:540px">
+        <span style="color:var(--amber)">ℹ</span>
+        <span id="billing-note-text">Stripe Checkout vasitəsilə təhlükəsiz abunəlik. Ödəniş təsdiqləndikdən sonra plan hesabınızda aktivləşdirilir.</span>
+      </div>
+
+      <!-- Enterprise -->
+      <div style="margin-top:40px;padding:28px 32px;background:var(--bg-card);border:1px solid var(--border-mid);border-radius:var(--radius);max-width:580px">
+        <h3 style="color:#fff;font-size:18px;font-weight:700;margin-bottom:8px" data-i18n="pricing.enterpriseTitle">Müəssisə üçün xüsusi plan?</h3>
+        <p style="color:var(--text-2);font-size:14px;margin-bottom:20px;line-height:1.65" data-i18n="pricing.enterpriseDesc">Böyük komandalar, franchise şəbəkələri və ya xüsusi inteqrasiya tələbləri üçün bizimlə əlaqə saxlayın.</p>
+        <a href="contact.html" class="btn btn-ghost" data-i18n="cta.contactUs">Əlaqə saxla ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature comparison -->
+  <section style="padding:0 0 80px;background:var(--bg-dark)">
+    <div class="container">
+      <h2 style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:24px;letter-spacing:-0.02em" data-i18n="pricing.comparisonTitle">Plan müqayisəsi</h2>
+      <div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;min-width:480px">
+          <thead>
+            <tr style="background:var(--bg-surface);border-bottom:1px solid var(--border-mid)">
+              <th style="padding:14px 16px;text-align:left;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3)" data-i18n="pricing.feature">Xüsusiyyət</th>
+              <th style="padding:14px 16px;text-align:center;font-size:12px;font-weight:700;color:var(--text-3)">Free</th>
+              <th style="padding:14px 16px;text-align:center;font-size:12px;font-weight:700;color:var(--orange)">Pro</th>
+              <th style="padding:14px 16px;text-align:center;font-size:12px;font-weight:700;color:var(--text-3)">Business</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)" data-i18n="pricing.locationAnalysis">Lokasiya analizi</td>
+              <td style="padding:13px 16px;text-align:center;font-size:13px;color:var(--text-1)">3 / ay</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--text-1)">50 / ay</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--text-1)">200 / ay</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)" data-i18n="pricing.competitionMap">Rəqabət xəritəsi (OSM)</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)" data-i18n="pricing.financeScenario">Maliyyə ssenarisi</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)" data-i18n="pricing.aiExplain">AI izah (Groq)</td>
+              <td style="padding:13px 16px;text-align:center">5 / gün</td>
+              <td style="padding:13px 16px;text-align:center">30 / gün</td>
+              <td style="padding:13px 16px;text-align:center">100 / gün</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)" data-i18n="pricing.pdfReport">PDF hesabat</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--text-3)">—</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+              <td style="padding:13px 16px;text-align:center;color:var(--green)">✓</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)" data-i18n="pricing.historyStorage">Tarixçə saxlama</td>
+              <td style="padding:13px 16px;text-align:center">7 gün</td>
+              <td style="padding:13px 16px;text-align:center">90 gün</td>
+              <td style="padding:13px 16px;text-align:center">Limitsiz</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)">Maksimum radius</td>
+              <td style="padding:13px 16px;text-align:center">500 m</td><td style="padding:13px 16px;text-align:center">1.2 km</td><td style="padding:13px 16px;text-align:center">3 km</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)">Məkan müqayisəsi / sorğu</td>
+              <td style="padding:13px 16px;text-align:center">2</td><td style="padding:13px 16px;text-align:center">6</td><td style="padding:13px 16px;text-align:center">9</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:13px 16px;font-size:13px;color:var(--text-2)">AI sorğusu / gün</td>
+              <td style="padding:13px 16px;text-align:center">5</td><td style="padding:13px 16px;text-align:center">30</td><td style="padding:13px 16px;text-align:center">100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="global-footer">
+  <div class="container">
+    <div class="global-footer-grid">
+      <div class="footer-brand">
+        <strong>Reyt<span>Up</span></strong>
+        <p data-i18n="footer.desc">Lokasiya, rəqabət və maliyyə ssenarisini bir yerdə oxuyan qərar platforması.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.platform">Platforma</h4>
+        <a href="analyze.html" data-i18n="nav.analysis">Analiz</a>
+        <a href="dashboard.html" data-i18n="nav.dashboard">Panel</a>
+        <a href="pricing.html" data-i18n="nav.pricing">Qiymətlər</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.company">Şirkət</h4>
+        <a href="about.html" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" data-i18n="nav.contact">Əlaqə</a>
+        <a href="privacy.html" data-i18n="footer.privacy">Məxfilik</a>
+        <a href="terms.html" data-i18n="footer.terms">Şərtlər</a>
+      </div>
+      <div class="footer-newsletter">
+        <h4 data-i18n="footer.newsletter">Yeni imkanlardan xəbərdar ol</h4>
+        <form data-newsletter-form class="footer-newsletter-form">
+          <input type="email" name="email" required placeholder="Email ünvanın" data-i18n-placeholder="footer.emailPlaceholder">
+          <button type="submit">↗</button>
+        </form>
+        <div class="footer-contact-info"><span data-i18n="footer.location">Bakı, Azərbaycan</span><br><a href="mailto:zenithteam.tech@gmail.com">zenithteam.tech@gmail.com</a></div>
+        <a class="footer-instagram-link" href="https://www.instagram.com/reytup.ai/" target="_blank" rel="noopener noreferrer" aria-label="ReytUp Instagram @reytup.ai profilini aç"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg><span>@reytup.ai</span><span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="global-footer-bottom">
+      <span data-i18n="footer.rights">© 2026 ReytUp. Bütün hüquqlar qorunur.</span>
+      <span>Better places. Clearer decisions.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="page-i18n.js"></script>
+<script src="workspace-shell.js" defer></script>
+<script src="app.js" defer></script>
+<script src="design-enhance.js"></script>
+<script src="assistant.js" defer></script>
+</body>
+</html>
